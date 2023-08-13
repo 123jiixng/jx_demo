@@ -1,0 +1,1006 @@
+commit 6c0dba763ba6c86393826d0bc4034a21cc7d1313
+Author: shenqw <shenqw@inhand.com.cn>
+Date:   Wed May 10 18:11:37 2023 +0800
+
+    feat(cellular): [ER605] Add NRQ2(RM500U-CN) and NRQ3(RM520N-GL) on new hardware.
+
+diff --git a/includes/if_common.h b/includes/if_common.h
+index 88f35bad..9c1d4694 100755
+--- a/includes/if_common.h
++++ b/includes/if_common.h
+@@ -2227,6 +2227,7 @@ extern PORT_CONF g_port_conf_default;
+ #define VIF_CELLULAR_PCIE_RMNET_NAME	"rmnet_apn%d" //for rm500q
+ #define VIF_CELLULAR_PCIE0_NAME	"pcie0" //for FM650
+ #define VIF_CELLULAR_MIPC_NAME	"mipc_apn%d" //for FG360
++#define VIF_CELLULAR_APN_NAME	"apn%d" //for rm520n
+ #define GRE_BASIC_IF		"gre"
+ #define VIF_GRE_NAME GRE_BASIC_IF"%d" //gre1,...
+ #define VXLAN_BASIC_IF		"vxlan"
+diff --git a/includes/license.h b/includes/license.h
+index a27f0b9b..431be2a0 100755
+--- a/includes/license.h
++++ b/includes/license.h
+@@ -907,6 +907,8 @@ typedef enum{
+                                                 | ((88) << IH_MODEM_NUM_OFF) | IH_LIC_MODEM) & IH_FEATURE_BIT_MASK)
+ #define IH_FEATURE_MODEM_RM500 (((('N'-'A') << IH_MODEM_CELL_OFF) | (('R'-'A') << IH_MODEM_VENDOR_OFF) \
+                                                 | ((00) << IH_MODEM_NUM_OFF) | IH_LIC_MODEM) & IH_FEATURE_BIT_MASK)
++#define IH_FEATURE_MODEM_RM520N (((('N'-'A') << IH_MODEM_CELL_OFF) | (('Q'-'A') << IH_MODEM_VENDOR_OFF) \
++                                                | ((00) << IH_MODEM_NUM_OFF) | IH_LIC_MODEM) & IH_FEATURE_BIT_MASK)
+ #define IH_FEATURE_MODEM_RM500U (((('N'-'A') << IH_MODEM_CELL_OFF) | (('R'-'A') << IH_MODEM_VENDOR_OFF) \
+                                                 | ((02) << IH_MODEM_NUM_OFF) | IH_LIC_MODEM) & IH_FEATURE_BIT_MASK)
+ #define IH_FEATURE_MODEM_RG500 (((('N'-'A') << IH_MODEM_CELL_OFF) | (('R'-'A') << IH_MODEM_VENDOR_OFF) \
+diff --git a/includes/misc.h b/includes/misc.h
+index f9b09002..a6a56714 100755
+--- a/includes/misc.h
++++ b/includes/misc.h
+@@ -140,6 +140,7 @@ extern char ** argv_dup(const char **argv);
+ extern void argv_free(char **argv);
+ 
+ extern void ih_srand(unsigned int seed);
++extern int get_random_hw_addr(char *hw_addr, int size, int is_inhand);
+ extern int stop_or_kill(pid_t pid, int timeout);
+ extern int cli_pipecmd(const char *cmd);
+ extern int is_valid_ip(const char *host);
+diff --git a/libshared/ih_firmware.c b/libshared/ih_firmware.c
+index 7ea8e72e..5ec4e9a6 100755
+--- a/libshared/ih_firmware.c
++++ b/libshared/ih_firmware.c
+@@ -36,6 +36,10 @@ MODEL_SUPPORT	model_support_list[] = {
+ 	{ER605_LF20,			"V2.0.1"},
+ 	{ER605_LF20_WLAN,		"V2.0.1"},
+ 
++	// NRQ3
++	{ER605_NRQ3,			"V2.0.5"},
++	{ER605_NRQ3_WLAN,		"V2.0.5"},
++
+ #elif defined INHAND_ER3
+ 	{ODU2002_NAVA_WLAN,		"V2.0.1"},
+ 
+diff --git a/libshared/is_config.c b/libshared/is_config.c
+index 74c417fa..0a88bfbe 100755
+--- a/libshared/is_config.c
++++ b/libshared/is_config.c
+@@ -439,6 +439,7 @@ BOOL modem_support_dhcp_option_mtu(void)
+ 		|| ih_license_support(IH_FEATURE_MODEM_EC25)
+ 		|| ih_license_support(IH_FEATURE_MODEM_EP06)
+ 		|| ih_license_support(IH_FEATURE_MODEM_FG360)
++		|| ih_license_support(IH_FEATURE_MODEM_RM520N)
+ 		|| ih_license_support(IH_FEATURE_MODEM_RM500)){
+ 		return TRUE;
+ 	}
+diff --git a/libshared/license.c b/libshared/license.c
+index e82aa7d0..cb8c3f96 100755
+--- a/libshared/license.c
++++ b/libshared/license.c
+@@ -4354,8 +4354,8 @@ IH_LICENSE gl_licenses[] = {
+     },
+ 	{.model = ER605_NRQ3,
+      .keys =    {"ER", "605", "NRQ3"},
+-     .hw_features = IH_FEATURE_ER6 | IH_FEATURE_ETH4_MTK | IH_FEATURE_WLAN_MTK,
+-     .modem_features = IH_FEATURE_MODEM_RM500,
++     .hw_features = IH_FEATURE_ER6 | IH_FEATURE_ETH4_MTK | IH_FEATURE_WLAN_MTK | IH_FEATURE_ETH1_RTL8211F | IH_FEATURE_PCIE2ETH_RTL8125B,
++     .modem_features = IH_FEATURE_MODEM_RM520N,
+      .sw_features = IH_FEATURE_VPN  | IH_FEATURE_SW_DSA,
+     },
+     {.model = ER605_EN00_WLAN,
+@@ -4408,8 +4408,8 @@ IH_LICENSE gl_licenses[] = {
+ 	},
+ 	{.model = ER605_NRQ3_WLAN,
+      .keys =    {"ER", "605", "NRQ3", "WLAN"},
+-     .hw_features = IH_FEATURE_ER6 | IH_FEATURE_ETH4_MTK | IH_FEATURE_WLAN_MTK,
+-     .modem_features = IH_FEATURE_MODEM_RM500,
++     .hw_features = IH_FEATURE_ER6 | IH_FEATURE_ETH4_MTK | IH_FEATURE_WLAN_MTK | IH_FEATURE_ETH1_RTL8211F | IH_FEATURE_PCIE2ETH_RTL8125B,
++     .modem_features = IH_FEATURE_MODEM_RM520N,
+      .sw_features = IH_FEATURE_VPN | IH_FEATURE_WLAN_AP | IH_FEATURE_WLAN_STA | IH_FEATURE_SW_DSA,
+ 	},
+ #endif
+diff --git a/libshared/misc.c b/libshared/misc.c
+index f94c48a0..fa07d334 100644
+--- a/libshared/misc.c
++++ b/libshared/misc.c
+@@ -769,6 +769,41 @@ void ih_srand(unsigned int seed)
+ 	srand(seed);
+ }
+ 
++//get a string of random mac address
++int get_random_hw_addr(char *hw_addr, int size, int is_inhand)
++{
++	int i = 0;
++	unsigned char random[6]	= {0};
++
++	if(!hw_addr || size < 18){
++		return -1;
++	}
++
++	ih_srand(time(NULL));
++
++	memset(hw_addr, 0, size);
++	for(i = 0; i < 6; i++){
++		random[i] = rand() % 255;
++	}
++
++	//Reference kernel implementation: eth_hw_addr_random()
++	random[0] &= 0xfe; /* clear multicast bit */
++	random[0] |= 0x02; /* set local assignment bit (IEEE802) */
++
++	if(is_inhand){
++		strlcpy(hw_addr, "00:18:05", size);
++		for(i = 3; i < 6; i++){
++			snprintf(hw_addr + strlen(hw_addr), size - strlen(hw_addr), ":%02x", random[i]);
++		}
++	}else{
++		for(i = 0; i < 6; i++){
++			snprintf(hw_addr + strlen(hw_addr), size - strlen(hw_addr), "%s%02x", i ? ":" : "", random[i]);
++		}
++	}
++
++	return 0;
++}
++
+ /*
+  * send SIGTERM to pid and wait for at last timeout (in ms)
+  * if it does not exit, send SIGKILL
+diff --git a/libshared/vif_shared.c b/libshared/vif_shared.c
+index fef2bbde..8de98527 100755
+--- a/libshared/vif_shared.c
++++ b/libshared/vif_shared.c
+@@ -127,6 +127,8 @@ IH_STATUS vif_get_sys_name(IF_INFO *if_info, char *name)
+ 		} else if (ih_license_support(IH_FEATURE_MODEM_RM500)
+ 				|| ih_license_support(IH_FEATURE_MODEM_EP06)) {
+ 				snprintf(name, VIF_NAME_SIZE, VIF_CELLULAR_PCIE_RMNET_NAME, if_info->port);
++		} else if (ih_license_support(IH_FEATURE_MODEM_RM520N)) {
++				snprintf(name, VIF_NAME_SIZE, VIF_CELLULAR_APN_NAME, if_info->port);
+ 		} else if (ih_license_support(IH_FEATURE_MODEM_FM650)
+ 				|| ih_license_support(IH_FEATURE_MODEM_RM500U)) {
+ 				snprintf(name, VIF_NAME_SIZE, VIF_CELLULAR_PCIE0_NAME); 
+diff --git a/redial/ih_redial.c b/redial/ih_redial.c
+index 99b50f09..9b03a89b 100755
+--- a/redial/ih_redial.c
++++ b/redial/ih_redial.c
+@@ -118,6 +118,7 @@ extern int gl_evdo_pvs8_at_lists[];
+ extern int gl_lte_pls8_at_lists[];
+ extern int gl_lte_ec25_at_lists[];
+ extern int gl_nr_rm500_at_lists[];
++extern int gl_nr_rm520n_at_lists[];
+ extern int gl_nr_rm500u_at_lists[];
+ extern int gl_lte_ep06_at_lists[];
+ extern int gl_lte_ec20_at_lists[];
+@@ -157,6 +158,7 @@ extern int check_rm500q_data_iface(char *dev, int iface_id, int verbose);
+ extern int check_rm500u_pcie_mode(char *dev, int mode, int verbose);
+ extern int check_fm650_data_iface(char *dev, const char *iface, int verbose);
+ extern int check_fm650_ippass(char *dev, int verbose);
++extern int check_rm520n_eth_setting(char *dev, int verbose);
+ 
+ extern int write_fd(int fd, char* buf, size_t size, int timeout, int verbose);
+ int auto_select_net_apn(char *imsi_code, BOOL debug);
+@@ -241,6 +243,7 @@ static struct _modem_type gl_modem_types[]={
+ 	{IH_FEATURE_MODEM_TOBYL201, "/dev/ttyACM0", "/dev/ttyACM0", gl_ublox_toby_lte_at_lists},
+ 	{IH_FEATURE_MODEM_EC25, "/dev/ttyUSB2", "/dev/ttyUSB3", gl_lte_ec25_at_lists},
+ 	{IH_FEATURE_MODEM_RM500, "/dev/ttyUSB2", "/dev/ttyUSB2", gl_nr_rm500_at_lists, "/dev/mhi_DUN", 0x17cb},
++	{IH_FEATURE_MODEM_RM520N, "/dev/ttyUSB2", "/dev/ttyUSB2", gl_nr_rm520n_at_lists},
+ 	{IH_FEATURE_MODEM_RM500U, "/dev/ttyUSB2", "/dev/ttyUSB3", gl_nr_rm500u_at_lists, "/dev/stty_nr31", 0x16c3},
+ 	{IH_FEATURE_MODEM_RG500, "/dev/ttyUSB2", "/dev/ttyUSB3", gl_nr_rm500_at_lists},
+ 	{IH_FEATURE_MODEM_EP06, "/dev/ttyUSB2", "/dev/ttyUSB3", gl_lte_ep06_at_lists},
+@@ -387,6 +390,10 @@ REDIAL_DIAL_STATE gl_redial_dial_state = REDIAL_DIAL_STATE_NONE;
+ static REDIAL_PENDING_TASK gl_redial_pending_task = REDIAL_PENDING_TASK_NONE;
+ //static BOOL gl_need_function_reset = FALSE;
+ 
++MY_GLOBAL gl = {
++	.default_cid = -1,
++};
++
+ static const MY_REDIAL_INFO	gl_default_myinfo = {
+ 	.svcinfo = {
+ 		.modem_info = {
+@@ -599,6 +606,8 @@ static int32 my_load_running_state()
+ 
+ 	ret = safe_fread(&g_sysinfo, sizeof(g_sysinfo), 1, fp);
+ 	if (ret != 1) LOG_WA("failed to load global data");
++	ret = safe_fread(&gl, sizeof(gl), 1, fp);
++	if (ret != 1) LOG_WA("failed to load global data");
+ 	ret = safe_fread(&gl_myinfo, sizeof(gl_myinfo), 1, fp);
+ 	if (ret != 1) LOG_WA("failed to load service data");
+ 
+@@ -634,6 +643,8 @@ static int32 my_dump_running_state()
+ 	//FIXME: make sure write is completed and is not interrupted by signals!
+ 	ret = safe_fwrite(&g_sysinfo, sizeof(g_sysinfo), 1, fp);
+ 	if (ret != 1) LOG_WA("failed to save global data");
++	ret = safe_fwrite(&gl, sizeof(gl), 1, fp);
++	if (ret != 1) LOG_WA("failed to save global data");
+ 	ret = safe_fwrite(&gl_myinfo, sizeof(gl_myinfo), 1, fp);
+ 	if (ret!=1) LOG_WA("failed to save service data");
+ 
+@@ -2872,10 +2883,14 @@ static struct event gl_ev_sigchld, gl_ev_sighup, gl_ev_sigterm, gl_ev_sigint, gl
+ static void sighup_cb(int sig, short ev, void *data)
+ {
+ 	MYTRACE_ENTER();
+-
++#if 0
+ 	/* Restart and re-read configuration */
+ 	LOG_WA("Received SIGHUP; restarting...");
+ 	restart();
++#else
++	LOG_WA("Received SIGHUP");
++	change_redial_state(REDIAL_STATE_INIT);
++#endif
+ 
+ 	MYTRACE_LEAVE();
+ }
+@@ -3182,7 +3197,12 @@ static int save_raw_name_to_ifalias(void)
+ 			return ERR_OK;
+ 		}
+ 		
+-		snprintf(raw_name, sizeof(raw_name), "%s", USB0_WWAN);
++		if(ih_license_support(IH_FEATURE_PCIE2ETH_RTL8125B)){
++			snprintf(raw_name, sizeof(raw_name), "%s", APN1_WWAN);
++		}else{
++			snprintf(raw_name, sizeof(raw_name), "%s", USB0_WWAN);
++		}
++
+ 		snprintf(file, sizeof(file), "/sys/class/net/%s/ifalias", raw_name);
+ 		if(access(file, F_OK)){
+ 			return ERR_FAILED;
+@@ -3371,8 +3391,14 @@ static int check_cell_sys_name(int wwan_id, int id)
+ 		if(gl_modem_dev_state & MODEM_DEV_PCIE_ALIVE){
+ 			return ERR_OK;
+ 		}
+-		//rename usb0 to pcie0
+-		snprintf(raw_name, sizeof(raw_name), "%s", USB0_WWAN);
++
++		//rename usb0 or apn1 to pcie0
++		if(ih_license_support(IH_FEATURE_PCIE2ETH_RTL8125B)){
++			snprintf(raw_name, sizeof(raw_name), "%s", APN1_WWAN);
++		}else{
++			snprintf(raw_name, sizeof(raw_name), "%s", USB0_WWAN);
++		}
++
+ 		snprintf(file, sizeof(file), "/sys/class/net/%s/ifalias", sys_name);
+ 		if(!access(file, F_OK)){
+ 			f_read(file, buff, sizeof(buff));
+@@ -4847,6 +4873,7 @@ static void my_signal_timer(int fd, short event, void *arg)
+ 
+ 		handle_at_cmd(gl_commport, pcmd, 0);
+ 	} else if (modem_code==IH_FEATURE_MODEM_RM500
++			|| modem_code==IH_FEATURE_MODEM_RM520N
+ 			|| modem_code==IH_FEATURE_MODEM_RM500U
+ 			|| modem_code==IH_FEATURE_MODEM_RG500
+ 			|| modem_code==IH_FEATURE_MODEM_FM650
+@@ -5258,6 +5285,7 @@ static void run_redial_pending_task(REDIAL_PENDING_TASK task_mask, int verbose)
+ 			|| gl_modem_code == IH_FEATURE_MODEM_EC20
+ 			|| gl_modem_code == IH_FEATURE_MODEM_EC25
+ 			|| gl_modem_code == IH_FEATURE_MODEM_RM500
++			|| gl_modem_code == IH_FEATURE_MODEM_RM520N
+ 			|| gl_modem_code == IH_FEATURE_MODEM_RM500U
+ 			|| gl_modem_code == IH_FEATURE_MODEM_RG500
+ 			|| gl_modem_code == IH_FEATURE_MODEM_EP06
+@@ -5344,6 +5372,7 @@ static void my_wwan_connect_timer(int fd, short event, void *arg)
+ 	VIF_INFO *pinfo = &(gl_myinfo.svcinfo.vif_info);
+ 	//PPP_CONFIG *ppp_config = &(gl_myinfo.priv.ppp_config);
+ 	MODEM_CONFIG *modem_config = &(gl_myinfo.priv.modem_config);
++	int verbose = gl_myinfo.priv.ppp_debug;
+ 
+ 	if(modem_config->debug){
+ 		evutil_timerclear(&tv);
+@@ -5417,13 +5446,20 @@ static void my_wwan_connect_timer(int fd, short event, void *arg)
+ 
+ 			scmd = find_at_cmd(AT_CMD_CGATT);
+ 			break;
++		case IH_FEATURE_MODEM_RM520N:
++			verbose = 0;
++			pcmd = find_at_cmd(AT_CMD_MPDN_STATUS);
++			if(ih_key_support("NRQ3")){
++				scmd = find_at_cmd(AT_CMD_CGPADDR);
++			}
++			break;
+ 		default:
+ 			return;
+ 	}
+ 
+ 	if (pcmd){
+ 		//send request command
+-		ret = send_at_cmd_sync(gl_commport, pcmd->atc, buf, sizeof(buf), gl_myinfo.priv.ppp_debug);
++		ret = send_at_cmd_sync(gl_commport, pcmd->atc, buf, sizeof(buf), verbose);
+ 		if (ret==0){
+ 			ret = pcmd->at_cmd_handle(pcmd, buf, 0, modem_config, info);			
+ 			if (ERR_AT_OK != ret){
+@@ -5445,7 +5481,11 @@ static void my_wwan_connect_timer(int fd, short event, void *arg)
+ 	}
+ 
+ 	if (scmd) {
+-		ret = send_at_cmd_sync(gl_commport, scmd->atc, buf, sizeof(buf), gl_myinfo.priv.ppp_debug);
++		if(scmd->index == AT_CMD_CGPADDR && gl.default_cid > 0){
++			snprintf(scmd->atc, sizeof(scmd->atc), "AT+CGPADDR=%d\r\n", gl.default_cid);
++		}
++
++		ret = send_at_cmd_sync(gl_commport, scmd->atc, buf, sizeof(buf), verbose);
+ 		if (ret==0) {
+ 			ret = scmd->at_cmd_handle(scmd, buf, 0, modem_config, info);
+ 			if (ERR_AT_OK != ret) {
+@@ -5517,7 +5557,7 @@ AT_CMD* find_at_cmd2(int index, uns16 retry_cnt)
+ 			strlcpy(pcmd1->atc, pcmd2->atc, sizeof(pcmd1->atc));
+ 			strlcpy(pcmd1->resp, pcmd2->resp, sizeof(pcmd1->resp));
+ 			pcmd1->at_cmd_handle = pcmd2->at_cmd_handle;
+-			LOG_DB("%s(%d) cmd:%s", pcmd1->name, index, pcmd1->atc);
++			//LOG_DB("%s(%d) cmd:%s", pcmd1->name, index, pcmd1->atc);
+ 		}
+ 	}
+ 
+@@ -5790,7 +5830,10 @@ int32 start_dhcpc(char *interface, int wwan_id, BOOL debug)
+ 		dialup_config = &(gl_myinfo.priv.ppp_config); 
+ 	}
+ 
+-	if(gl_modem_code==IH_FEATURE_MODEM_FM650
++	if(ih_license_support(IH_FEATURE_PCIE2ETH_RTL8125B)){
++		vif_get_sys_name(&pinfo->if_info, iface);
++		f_write_string("/sys/class/net/eth0/queues/rx-0/rps_cpus", "e", 0, 0);
++	}else if(gl_modem_code==IH_FEATURE_MODEM_FM650
+ 		|| gl_modem_code==IH_FEATURE_MODEM_RM500U){
+ 		if(gl_modem_dev_state & MODEM_DEV_PCIE_ALIVE){
+ 			eval("ifconfig", "sipa_dummy0", "up");
+@@ -6251,6 +6294,7 @@ int get_sub_deamon_type(int idx)
+ 		|| get_modem_code(idx)==IH_FEATURE_MODEM_ME909
+ 		|| get_modem_code(idx)==IH_FEATURE_MODEM_ELS31
+ 		|| get_modem_code(idx)==IH_FEATURE_MODEM_RM500U
++		|| get_modem_code(idx)==IH_FEATURE_MODEM_RM520N
+ 		|| get_modem_code(idx)==IH_FEATURE_MODEM_FM650
+ 	//	|| get_modem_code(idx)==IH_FEATURE_MODEM_ELS61
+ 		//|| get_modem_code(idx)==IH_FEATURE_MODEM_ELS81
+@@ -6304,6 +6348,7 @@ static void fixup_at_list(void)
+ 		|| modem_code==IH_FEATURE_MODEM_EP06
+ 		|| modem_code==IH_FEATURE_MODEM_RM500U
+ 		|| modem_code==IH_FEATURE_MODEM_RM500
++		|| modem_code==IH_FEATURE_MODEM_RM520N
+ 		|| modem_code==IH_FEATURE_MODEM_RG500){
+ 		skip_net_pos = 1;
+ 	}
+@@ -6337,6 +6382,7 @@ static void fixup_at_list(void)
+ 		}
+ 
+ 		if(modem_code==IH_FEATURE_MODEM_RM500
++			|| modem_code==IH_FEATURE_MODEM_RM520N
+ 			|| modem_code==IH_FEATURE_MODEM_FM650
+ 			|| modem_code==IH_FEATURE_MODEM_FG360
+ 			|| modem_code==IH_FEATURE_MODEM_RM500U
+@@ -6354,6 +6400,7 @@ static void fixup_at_list(void)
+ 		}
+ 
+ 		if(modem_code==IH_FEATURE_MODEM_RM500
++			|| modem_code==IH_FEATURE_MODEM_RM520N
+ 			|| modem_code==IH_FEATURE_MODEM_FM650
+ 			|| modem_code==IH_FEATURE_MODEM_FG360
+ 			|| modem_code==IH_FEATURE_MODEM_RM500U
+@@ -6382,6 +6429,7 @@ static void fixup_at_list(void)
+ 			gl_at_lists[9] = AT_CMD_CEREG;
+ 			gl_at_lists[11] = AT_CMD_AT;
+ 		}else if(modem_code==IH_FEATURE_MODEM_RM500
++				|| modem_code==IH_FEATURE_MODEM_RM520N
+ 				|| modem_code==IH_FEATURE_MODEM_RM500U
+ 				|| modem_code==IH_FEATURE_MODEM_RG500
+ 				|| modem_code==IH_FEATURE_MODEM_EC20
+@@ -6427,6 +6475,7 @@ static void fixup_at_list(void)
+ 			gl_at_lists[9] = AT_CMD_AT;
+ 			gl_at_lists[11] = AT_CMD_CGREG;
+ 		}else if(modem_code==IH_FEATURE_MODEM_RM500
++				|| modem_code==IH_FEATURE_MODEM_RM520N
+ 				|| modem_code==IH_FEATURE_MODEM_RM500U
+ 				|| modem_code==IH_FEATURE_MODEM_RG500
+ 				|| modem_code==IH_FEATURE_MODEM_EC20
+@@ -6529,6 +6578,7 @@ static void fixup_at_list(void)
+ 			gl_at_lists[9] = AT_CMD_CEREG;
+ 			gl_at_lists[11] = AT_CMD_AT;
+ 		}else if(modem_code==IH_FEATURE_MODEM_RM500
++				|| modem_code==IH_FEATURE_MODEM_RM520N
+ 				|| modem_code==IH_FEATURE_MODEM_FM650
+ 				|| modem_code==IH_FEATURE_MODEM_FG360
+ 				|| modem_code==IH_FEATURE_MODEM_RM500U
+@@ -6848,6 +6898,79 @@ retry:
+ 	return ret;
+ }
+ 
++static int check_modem_cgpaddr_timeout(char *commdev, int cid, int timeout, BOOL debug)
++{
++	char at_rsp[512]={0};
++	time_t tm_start = time(NULL);
++	AT_CMD *pcmd = find_at_cmd(AT_CMD_CGPADDR);
++
++	while(pcmd && pcmd->at_cmd_handle && (time(NULL) - tm_start) < timeout){
++		memset(at_rsp, 0, sizeof(at_rsp));
++		snprintf(pcmd->atc, sizeof(pcmd->atc), "AT+CGPADDR=%d\r\n", cid);
++		if(send_at_cmd_sync(commdev, pcmd->atc, at_rsp, sizeof(at_rsp), debug)){
++			sleep(1);
++			continue;
++		}
++
++		if(pcmd->at_cmd_handle(pcmd, at_rsp, 0, NULL, NULL) == ERR_OK){
++			return ERR_OK;
++		}
++
++		sleep(1);
++	}
++
++	return ERR_FAILED;
++}
++
++static int modem_qmap_connect(char *commdev, int cid, BOOL debug)
++{
++	int ret = -1;
++	char at_cmd[64]={0};
++	char buff[128] = {0};
++	char mac_address[32] = {0};
++
++	//we need to configure "MPDN_rule" again if cid is changed.
++	if(gl.default_cid != cid){
++		if(gl.default_cid < 0){
++			//disable IPv6 Stateless Autoconfigration
++			f_write_string("/proc/sys/net/ipv6/conf/"APN1_WWAN"/accept_ra", "0", 0, 0);
++
++			get_random_hw_addr(mac_address, sizeof(mac_address), 1);
++			eval("ip", "link", "set", "dev", APN1_WWAN, "address", mac_address);
++		}else{
++			f_read("/sys/class/net/"APN1_WWAN"/address", buff, sizeof(buff));
++			sscanf(buff, "%[0-9:a-f]", mac_address);
++		}
++
++		send_at_cmd_sync_timeout(commdev, "AT+QMAP=\"MPDN_rule\",0\r\n", NULL, 0, debug, "OK", 8000);
++	
++		if(ih_key_support("NRQ3")){
++			snprintf(at_cmd, sizeof(at_cmd), "AT+QMAP=\"MPDN_rule\",0,%d,0,1,0,\"%s\"\r\n", cid, mac_address);
++		}else{ //NRQ1
++			snprintf(at_cmd, sizeof(at_cmd), "AT+QMAP=\"MPDN_rule\",0,%d,0,1,0,\"FF:FF:FF:FF:FF:FF\"\r\n", cid);
++		}
++
++		ret = send_at_cmd_sync_timeout(commdev, at_cmd, NULL, 0, debug, "OK", 8000);
++		if(ret){
++			LOG_IN("%s execute AT command %s faild, ret: %d", commdev, at_cmd, ret);
++			return ret;
++		}
++
++		gl.default_cid = cid;
++	}
++
++	snprintf(at_cmd, sizeof(at_cmd), "AT+QMAP=\"connect\",0,1\r\n");
++	ret = send_at_cmd_sync_timeout(commdev, at_cmd, NULL, 0, debug, "OK", 8000);
++	if(ret<0) {
++		LOG_IN("%s execute AT command %s faild, ret: %d", commdev, at_cmd, ret);
++		return ret;
++	}
++
++	sleep(5);
++
++	return check_modem_cgpaddr_timeout(commdev, cid, 10, debug);
++}
++
+ /*
+ liyb:Before use port wwan0 to connetct to network,we should config the modem and activate the wwan ip connection.
+ */
+@@ -7008,6 +7131,10 @@ static int active_modem_data_connection(char *commdev, PPP_CONFIG *info, MODEM_C
+ 			sleep(1);
+ 			snprintf(at_cmd, sizeof(at_cmd), "AT+QNETDEVCTL=%d,1,0\r\n", cid);
+ 			break;
++		case IH_FEATURE_MODEM_RM520N:
++			//TODO: support dual apn
++			modem_qmap_connect(commdev, cid, debug);
++			return ERR_OK;
+ 		default:
+ 			return ERR_OK;
+ 	}
+@@ -7238,6 +7365,7 @@ static int setup_modem_auth_parameters(char *commdev, PPP_PROFILE *p_profile, in
+ 			  || get_modem_code(gl_modem_idx) == IH_FEATURE_MODEM_EC20
+ 			  || get_modem_code(gl_modem_idx) == IH_FEATURE_MODEM_EC25
+ 			  || get_modem_code(gl_modem_idx) == IH_FEATURE_MODEM_RM500
++			  || get_modem_code(gl_modem_idx) == IH_FEATURE_MODEM_RM520N
+ 			  || get_modem_code(gl_modem_idx) == IH_FEATURE_MODEM_RG500
+ 			  || get_modem_code(gl_modem_idx) == IH_FEATURE_MODEM_EP06
+ 			  || get_modem_code(gl_modem_idx) == IH_FEATURE_MODEM_U8300C) {
+@@ -7268,6 +7396,7 @@ static int setup_modem_auth_parameters(char *commdev, PPP_PROFILE *p_profile, in
+ 		  || get_modem_code(gl_modem_idx) == IH_FEATURE_MODEM_EC20
+ 		  || get_modem_code(gl_modem_idx) == IH_FEATURE_MODEM_EC25
+ 		  || get_modem_code(gl_modem_idx) == IH_FEATURE_MODEM_RM500
++		  || get_modem_code(gl_modem_idx) == IH_FEATURE_MODEM_RM520N
+ 		  || get_modem_code(gl_modem_idx) == IH_FEATURE_MODEM_RG500
+ 		  || get_modem_code(gl_modem_idx) == IH_FEATURE_MODEM_EP06
+ 		  || get_modem_code(gl_modem_idx) == IH_FEATURE_MODEM_U8300C) {
+@@ -7457,6 +7586,7 @@ static int active_pdp_text(char *commdev, PPP_CONFIG *info, MODEM_CONFIG *modem_
+ 		||my_modem_code == IH_FEATURE_MODEM_EC20
+ 		||my_modem_code == IH_FEATURE_MODEM_EC25
+ 		||my_modem_code == IH_FEATURE_MODEM_RM500
++		||my_modem_code == IH_FEATURE_MODEM_RM520N
+ 		||my_modem_code == IH_FEATURE_MODEM_RM500U
+ 		||my_modem_code == IH_FEATURE_MODEM_RG500
+ 		||my_modem_code == IH_FEATURE_MODEM_FM650
+@@ -7497,6 +7627,7 @@ static int active_pdp_text(char *commdev, PPP_CONFIG *info, MODEM_CONFIG *modem_
+ 		  || get_modem_code(gl_modem_idx) == IH_FEATURE_MODEM_EC20
+ 		  || get_modem_code(gl_modem_idx) == IH_FEATURE_MODEM_EC25
+ 		  || get_modem_code(gl_modem_idx) == IH_FEATURE_MODEM_RM500
++		  || get_modem_code(gl_modem_idx) == IH_FEATURE_MODEM_RM520N
+ 		  || get_modem_code(gl_modem_idx) == IH_FEATURE_MODEM_RM500U
+ 		  || get_modem_code(gl_modem_idx) == IH_FEATURE_MODEM_RG500
+ 		  || get_modem_code(gl_modem_idx) == IH_FEATURE_MODEM_FM650
+@@ -7518,7 +7649,8 @@ static int active_pdp_text(char *commdev, PPP_CONFIG *info, MODEM_CONFIG *modem_
+ 				setup_modem_auth_parameters(commdev, p_profile, cid, debug);
+ 			}
+ 
+-			if(get_modem_code(gl_modem_idx) == IH_FEATURE_MODEM_RM500){
++			if(get_modem_code(gl_modem_idx) == IH_FEATURE_MODEM_RM500
++				|| get_modem_code(gl_modem_idx) == IH_FEATURE_MODEM_RM520N){
+ 				if(p_2nd_wwan_profile){
+ 				    setup_modem_auth_parameters(commdev, p_2nd_wwan_profile, get_pdp_context_id(WWAN_ID2), 0);
+ 				}
+@@ -7643,6 +7775,7 @@ static int active_pdp_text(char *commdev, PPP_CONFIG *info, MODEM_CONFIG *modem_
+ 			//redial_modem_set_cfun_mode(1, debug);
+ 			return 0;
+ 		case IH_FEATURE_MODEM_RM500:
++		case IH_FEATURE_MODEM_RM520N:
+ 		case IH_FEATURE_MODEM_RG500:
+ 		case IH_FEATURE_MODEM_EP06:
+ 			if(cid == VZW_CLASS3_CID){
+@@ -8647,6 +8780,10 @@ static void redial_handle(void)
+ 			if(gl_modem_code == IH_FEATURE_MODEM_FM650){
+ 				set_modem(gl_modem_code, MODEM_RESET);
+ 			}
++
++			if(ih_license_support(IH_FEATURE_PCIE2ETH_RTL8125B)){
++				timeout = 30;
++			}
+ #if !(defined INHAND_IR8 || defined INHAND_ER6)
+ 			cellular_ledcon(CELL_OFF);
+ #else
+@@ -8814,6 +8951,7 @@ static void redial_handle(void)
+ 					timeout = 40;
+ 				} else if (get_modem_code(gl_modem_idx) == IH_FEATURE_MODEM_LP41
+ 					|| get_modem_code(gl_modem_idx) == IH_FEATURE_MODEM_RM500
++					|| get_modem_code(gl_modem_idx) == IH_FEATURE_MODEM_RM520N
+ 					|| get_modem_code(gl_modem_idx) == IH_FEATURE_MODEM_RM500U
+ 					|| get_modem_code(gl_modem_idx) == IH_FEATURE_MODEM_RG500
+ 					|| get_modem_code(gl_modem_idx) == IH_FEATURE_MODEM_FM650
+@@ -8894,6 +9032,7 @@ static void redial_handle(void)
+ 					|| get_modem_code(gl_modem_idx) == IH_FEATURE_MODEM_NL668) {
+ 					timeout = 20;
+ 				} else if (get_modem_code(gl_modem_idx) == IH_FEATURE_MODEM_RM500
++						|| get_modem_code(gl_modem_idx) == IH_FEATURE_MODEM_RM520N
+ 						|| get_modem_code(gl_modem_idx) == IH_FEATURE_MODEM_FM650
+ 						|| get_modem_code(gl_modem_idx) == IH_FEATURE_MODEM_RM500U
+ 						|| get_modem_code(gl_modem_idx) == IH_FEATURE_MODEM_RG500) {
+@@ -8919,6 +9058,7 @@ static void redial_handle(void)
+ 
+ 					if ((gl_at_errno==ERR_AT_NOSIM) && gl_modem_reset_cnt < (3*MAX_REG_RETRY)) {
+ 						if(get_modem_code(gl_modem_idx) == IH_FEATURE_MODEM_RM500
++							|| get_modem_code(gl_modem_idx) == IH_FEATURE_MODEM_RM520N
+ 							|| get_modem_code(gl_modem_idx) == IH_FEATURE_MODEM_FM650
+ 							|| get_modem_code(gl_modem_idx) == IH_FEATURE_MODEM_RM500U
+ 							|| get_modem_code(gl_modem_idx) == IH_FEATURE_MODEM_RG500
+@@ -8937,6 +9077,7 @@ static void redial_handle(void)
+ 						|| get_modem_code(gl_modem_idx) == IH_FEATURE_MODEM_EC20
+ 						|| get_modem_code(gl_modem_idx) == IH_FEATURE_MODEM_EC25
+ 						|| get_modem_code(gl_modem_idx) == IH_FEATURE_MODEM_RM500
++						|| get_modem_code(gl_modem_idx) == IH_FEATURE_MODEM_RM520N
+ 						|| get_modem_code(gl_modem_idx) == IH_FEATURE_MODEM_RM500U
+ 						|| get_modem_code(gl_modem_idx) == IH_FEATURE_MODEM_RG500
+ 						|| get_modem_code(gl_modem_idx) == IH_FEATURE_MODEM_FM650
+@@ -8987,6 +9128,7 @@ static void redial_handle(void)
+ 						if(ih_license_support(IH_FEATURE_MODEM_FM650)
+ 							|| ih_license_support(IH_FEATURE_MODEM_FG360)
+ 							|| ih_license_support(IH_FEATURE_MODEM_RM500U)
++							|| ih_license_support(IH_FEATURE_MODEM_RM520N)
+ 							|| ih_license_support(IH_FEATURE_MODEM_RG500)
+ 							|| ih_license_support(IH_FEATURE_MODEM_NL668)){
+ 							gl_modem_cfun_reset_flag = TRUE;
+@@ -9229,6 +9371,13 @@ static void redial_handle(void)
+ 				timeout = 1;
+ 				break;
+ 			}
++		}else if(get_modem_code(gl_modem_idx) == IH_FEATURE_MODEM_RM520N){
++			if(check_rm520n_eth_setting(gl_commport, gl_myinfo.priv.ppp_debug) > 0){
++				gl_modem_reset_flag = TRUE;
++				gl_redial_state = REDIAL_STATE_MODEM_STARTUP;
++				timeout = 1;
++				break;
++			}
+ 		}
+ 
+ #ifdef INHAND_WR3
+@@ -9735,6 +9884,8 @@ static void redial_handle(void)
+ 					start_dhcpc(PCIE0_WWAN, WWAN_ID1, gl_myinfo.priv.ppp_debug);
+ 				}else if (ih_license_support(IH_FEATURE_MODEM_FG360)) {
+ 					start_mipc_wwan(WWAN_ID1, gl_myinfo.priv.ppp_debug);
++				}else if (ih_license_support(IH_FEATURE_MODEM_RM520N)) {
++					start_dhcpc(APN1_WWAN, WWAN_ID1, gl_myinfo.priv.ppp_debug);
+ 				}else {
+ 					start_dhcpc(USB0_WWAN, WWAN_ID1, gl_myinfo.priv.ppp_debug);
+ 				}
+diff --git a/redial/modem.c b/redial/modem.c
+index f4cf90ed..8099f42a 100755
+--- a/redial/modem.c
++++ b/redial/modem.c
+@@ -28,8 +28,10 @@
+ #include "ih_ipc.h"
+ #include "ih_updown_ipc.h"
+ #include "shared.h"
++#include "vif_shared.h"
+ 
+ #include "modem.h"
++#include "redial.h"
+ #include "operator.h"
+ 
+ extern int gl_at_fd;
+@@ -81,6 +83,7 @@ int check_els_sica_connection_status(AT_CMD *pcmd, char *buf, int retry, MODEM_C
+ int check_modem_apn_status(AT_CMD *pcmd, char *buf, int retry, MODEM_CONFIG *config, MODEM_INFO *info); 
+ void fixup_u8300c_at_list1(void);
+ int check_modem_cgpaddr_status(AT_CMD *pcmd, char *buf, int retry, MODEM_CONFIG *config, MODEM_INFO *info); 
++int check_modem_cgpaddr(AT_CMD *pcmd, char *buf, int retry, MODEM_CONFIG *config, MODEM_INFO *info);
+ int check_ublox_umnoconf(AT_CMD *pcmd, char *buf, int retry, MODEM_CONFIG *config, MODEM_INFO *info); 
+ int check_modem_ssrvset_actsrvset_10(AT_CMD *pcmd, char *buf, int retry, MODEM_CONFIG *config, MODEM_INFO *info); 
+ int get_band_by_arfcn(int network, int arfcn);
+@@ -97,6 +100,7 @@ int check_modem_gtrndis(AT_CMD *pcmd, char *buf, int retry, MODEM_CONFIG *config
+ int check_modem_qcfg_ims(AT_CMD *pcmd, char *buf, int retry, MODEM_CONFIG *config, MODEM_INFO *info);
+ int check_modem_qcfg_ims2(AT_CMD *pcmd, char *buf, int retry, MODEM_CONFIG *config, MODEM_INFO *info);
+ int check_modem_cavims(AT_CMD *pcmd, char *buf, int retry, MODEM_CONFIG *config, MODEM_INFO *info);
++int check_modem_mpdn_status(AT_CMD *pcmd, char *buf, int retry, MODEM_CONFIG *config, MODEM_INFO *info);
+ 
+ extern int auto_select_net_apn(char *imsi_code, BOOL debug);
+ extern int redial_modem_function_reset(BOOL debug); 
+@@ -207,7 +211,7 @@ AT_CMD gl_at_cmds[] = {
+ 	//ATEL:LP41
+ 	{AT_CMD_AINIT,	"AT_CMD_AINIT",	"AT%STATUS=\"init\"\r\n",	"",	AT_DEFAULT_TIMEOUT,	AT_DEFAULT_TIMES,NULL, "INIT", ERR_AT_NAK},
+ 	{AT_CMD_PDNACT,	"AT_CMD_PDNACT", "AT%PDNACT?\r\n",	"",	AT_DEFAULT_TIMEOUT,	AT_DEFAULT_TIMES, check_lp41_connection_status, "%PDNACT", ERR_AT_NAK},
+-	{AT_CMD_CGPADDR, "AT_CMD_CGPADDR", "AT+CGPADDR\r\n",	"",	AT_DEFAULT_TIMEOUT,	AT_DEFAULT_TIMES, check_lp41_ipaddr_status, "CGPADDR", ERR_AT_NAK},
++	{AT_CMD_CGPADDR, "AT_CMD_CGPADDR", "AT+CGPADDR\r\n", "+CGPADDR:", AT_DEFAULT_TIMEOUT, AT_DEFAULT_TIMES, check_modem_cgpaddr, NULL, ERR_AT_NAK},
+ 	{AT_CMD_MEAS8,	"AT_CMD_MEAS8", "AT%MEAS=\"8\"\r\n",	"RSRP",  AT_DEFAULT_TIMEOUT, 30, check_lp41_signal_status, "RSSI", ERR_AT_NOSIGNAL},
+ 	
+ 	//ELSXX
+@@ -238,6 +242,7 @@ AT_CMD gl_at_cmds[] = {
+ 	{AT_CMD_QENG_SRVCELL, "AT_CMD_QENG_SRVCELL", "AT+QENG=\"servingcell\"\r\n", "+QENG:", AT_DEFAULT_TIMEOUT, 30, check_modem_qeng_servingcell, "signal", ERR_AT_NOSIGNAL},
+ 	{AT_CMD_QNR5G_MODE, "AT_CMD_QNR5G_MODE", "AT+QNWPREFCFG=\"nr5g_disable_mode\"\r\n", "nr5g_disable", AT_DEFAULT_TIMEOUT, 1, check_modem_nr5g_disable_mode, NULL, ERR_AT_NAK},
+ 	{AT_CMD_QCPRFMOD, "AT_CMD_QCPRFMODE","AT$QCPRFMOD=PID:1,OVRRIDEHOPDP:\"IPV4V6\"\r\n","", AT_DEFAULT_TIMEOUT,	1, NULL, NULL, ERR_AT_NAK},
++	{AT_CMD_MPDN_STATUS, "AT_CMD_MPDN_STATUS","AT+QMAP=\"MPDN_status\"\r\n", "+QMAP:", AT_DEFAULT_TIMEOUT,	1, check_modem_mpdn_status, NULL, ERR_AT_NAK},
+ 	//FIBOCOM 5G
+ 	{AT_CMD_GTCCINFO, "AT_CMD_GTCCINFO", "AT+GTCCINFO?\r\n", "+GTCCINFO:", AT_DEFAULT_TIMEOUT,	30, check_modem_gtccinfo, "signal", ERR_AT_NOSIGNAL},
+ 	{AT_CMD_GTRNDIS, "AT_CMD_GTRNDIS", "AT+GTRNDIS?\r\n", "GTRNDIS:", AT_DEFAULT_TIMEOUT,	1, check_modem_gtrndis, NULL, ERR_AT_NAK},
+@@ -465,6 +470,7 @@ int gl_lte_lua10_at_lists[] = {AT_CMD_AT, AT_CMD_ATE0, AT_CMD_GSN, AT_CMD_CPIN,
+ int gl_lte_u8300_at_lists[] = {AT_CMD_AT, AT_CMD_ATE0, AT_CMD_GSN, AT_CMD_CPIN, AT_CMD_CIMI, AT_CMD_AT,  AT_CMD_AUTO, AT_CMD_CSQ, AT_CMD_CEREG2,AT_CMD_CEREG, AT_CMD_CREG2,AT_CMD_CREG,AT_CMD_COPS2,AT_CMD_COPS,AT_CMD_PSRAT, AT_CMD_LICCID, -1};
+ int gl_lte_ec25_at_lists[] = {AT_CMD_AT, AT_CMD_ATE0, AT_CMD_QCFG_IMS, AT_CMD_GSN, AT_CMD_QCFG1, AT_CMD_CPIN, AT_CMD_CIMI,  AT_CMD_QCFG, AT_CMD_CSQ1, AT_CMD_CEREG2, AT_CMD_CGREG2,AT_CMD_CREG2,AT_CMD_CREG_AUTO,AT_CMD_COPS2,AT_CMD_COPS,AT_CMD_AT, AT_CMD_LICCID, AT_CMD_QENG_SRVCELL2, -1};
+ int gl_nr_rm500_at_lists[] = {AT_CMD_AT, AT_CMD_CFUN1, AT_CMD_ATE0, AT_CMD_QCFG_IMS, AT_CMD_GSN, AT_CMD_QCFG1, AT_CMD_CPIN, AT_CMD_CIMI, AT_CMD_MODE_PREF, AT_CMD_QENG_SRVCELL, AT_CMD_C5GREG2, AT_CMD_CEREG2, AT_CMD_CGREG2, AT_CMD_CREG_AUTO,AT_CMD_AT, AT_CMD_LICCID, -1};
++int gl_nr_rm520n_at_lists[] = {AT_CMD_AT, AT_CMD_CFUN1, AT_CMD_ATE0, AT_CMD_QCFG_IMS, AT_CMD_GSN, AT_CMD_QCFG1, AT_CMD_CPIN, AT_CMD_CIMI, AT_CMD_MODE_PREF, AT_CMD_QENG_SRVCELL, AT_CMD_C5GREG2, AT_CMD_CEREG2, AT_CMD_CGREG2, AT_CMD_CREG_AUTO,AT_CMD_AT, AT_CMD_LICCID, -1};
+ int gl_nr_rm500u_at_lists[] = {AT_CMD_AT, AT_CMD_CFUN1, AT_CMD_ATE0, AT_CMD_QCFG_IMS2, AT_CMD_GSN, AT_CMD_AT, AT_CMD_CPIN, AT_CMD_CIMI, AT_CMD_MODE_PREF2, AT_CMD_QENG_SRVCELL, AT_CMD_C5GREG2, AT_CMD_CEREG2, AT_CMD_CGREG2, AT_CMD_CREG_AUTO,AT_CMD_AT, AT_CMD_CCID, -1};
+ int gl_lte_ep06_at_lists[] = {AT_CMD_AT, AT_CMD_ATE0, AT_CMD_QCFG_IMS, AT_CMD_GSN, AT_CMD_QCFG1, AT_CMD_CPIN, AT_CMD_CIMI, AT_CMD_QCFG, AT_CMD_CSQ, AT_CMD_CEREG2, AT_CMD_CGREG2, AT_CMD_CREG_AUTO,AT_CMD_COPS2,AT_CMD_COPS,AT_CMD_AT, AT_CMD_LICCID, -1};
+ int gl_lte_ec20_at_lists[] = {AT_CMD_AT, AT_CMD_ATE0, AT_CMD_QCFG_IMS, AT_CMD_QCFG1, AT_CMD_CGSN, AT_CMD_CPIN, AT_CMD_CIMI,  AT_CMD_QCFG, AT_CMD_CSQ1, AT_CMD_CEREG2,AT_CMD_CGREG2,AT_CMD_CREG2,AT_CMD_CREG_AUTO,AT_CMD_COPS2,AT_CMD_COPS, AT_CMD_AT, AT_CMD_LICCID, AT_CMD_QENG_SRVCELL2, -1};
+@@ -565,6 +571,7 @@ int setup_custom_at_cmd(uint64_t modem_code)
+ 		custom_cmds = gl_quectel_ec25_at_cmds;
+ 		break;
+ 	case IH_FEATURE_MODEM_RM500:
++	case IH_FEATURE_MODEM_RM520N:
+ 	case IH_FEATURE_MODEM_RM500U:
+ 	case IH_FEATURE_MODEM_RG500:
+ 		custom_cmds = gl_quectel_rm500_at_cmds;
+@@ -738,6 +745,7 @@ static int usb_match_whitelist(char *vendor, char *product)
+ {
+ 	//TODO: add new whitelist
+ 	USB_BLACKLIST whitelist[] = {	{"2c7c","0800"},/*NRQ0*/
++					{"2c7c","0801"},/*RM520N*/
+ 					{"2c7c","0900"},/*NRQ2*/
+ 					{"2c7c","0125"},/*LQ20,FQ58,FQ38,FQ78*/
+ 					{"2c7c","0306"},/*FQ39*/
+@@ -1322,7 +1330,7 @@ int send_at_cmd_sync_timeout(char *dev, char* cmd, char* rsp, int len, int verbo
+ 	flush_fd(fd);
+ 
+ 	write_fd(fd, cmd, strlen(cmd), 1000, verbose);
+-	if(check_return2(fd, tmp, sizeof(tmp), check_value, timeout, verbose)<=0){
++	if(check_return3(fd, tmp, sizeof(tmp), check_value, timeout, verbose)<=0){
+ 		close(fd);
+ 		return -2;
+ 	}
+@@ -1491,6 +1499,7 @@ int set_modem(uint64_t modem_code, int action)
+ 		    || modem_code==IH_FEATURE_MODEM_EC20
+ 		    || modem_code==IH_FEATURE_MODEM_EC25
+ 		    || modem_code==IH_FEATURE_MODEM_RM500
++		    || modem_code==IH_FEATURE_MODEM_RM520N
+ 		    || modem_code==IH_FEATURE_MODEM_RM500U
+ 		    || modem_code==IH_FEATURE_MODEM_RG500
+ 		    || modem_code==IH_FEATURE_MODEM_FM650
+@@ -1553,6 +1562,7 @@ int set_modem(uint64_t modem_code, int action)
+ 		    || modem_code==IH_FEATURE_MODEM_EC20
+ 		    || modem_code==IH_FEATURE_MODEM_EC25
+ 		    || modem_code==IH_FEATURE_MODEM_RM500
++		    || modem_code==IH_FEATURE_MODEM_RM520N
+ 		    || modem_code==IH_FEATURE_MODEM_RM500U
+ 		    || modem_code==IH_FEATURE_MODEM_RG500
+ 		    || modem_code==IH_FEATURE_MODEM_FM650
+@@ -1591,6 +1601,7 @@ int set_modem(uint64_t modem_code, int action)
+ 		    || modem_code==IH_FEATURE_MODEM_EC20
+ 		    || modem_code==IH_FEATURE_MODEM_EC25
+ 		    || modem_code==IH_FEATURE_MODEM_RM500
++		    || modem_code==IH_FEATURE_MODEM_RM520N
+ 		    || modem_code==IH_FEATURE_MODEM_RM500U
+ 		    || modem_code==IH_FEATURE_MODEM_RG500
+ 		    || modem_code==IH_FEATURE_MODEM_EP06
+@@ -1659,6 +1670,7 @@ int set_modem(uint64_t modem_code, int action)
+ 		    || modem_code==IH_FEATURE_MODEM_EC20
+ 		    || modem_code==IH_FEATURE_MODEM_EC25
+ 		    || modem_code==IH_FEATURE_MODEM_RM500
++		    || modem_code==IH_FEATURE_MODEM_RM520N
+ 		    || modem_code==IH_FEATURE_MODEM_RM500U
+ 		    || modem_code==IH_FEATURE_MODEM_RG500
+ 		    || modem_code==IH_FEATURE_MODEM_FM650
+@@ -1673,7 +1685,7 @@ int set_modem(uint64_t modem_code, int action)
+ 				my_sleep(3);
+ 				system("echo 0 > /sys/bus/pci/slot_reset");
+ 				my_sleep(2);
+-			}else if(modem_code == IH_FEATURE_MODEM_RM500U){
++			}else if(modem_code == IH_FEATURE_MODEM_RM500U && !ih_license_support(IH_FEATURE_PCIE2ETH_RTL8125B)){
+ 				eval("ifconfig", "sipa_dummy0", "down");
+ 				eval("ifconfig", "pcie0", "down");
+ 				my_sleep(1);
+@@ -1722,6 +1734,7 @@ int set_modem(uint64_t modem_code, int action)
+ 		    || modem_code==IH_FEATURE_MODEM_EC20
+ 		    || modem_code==IH_FEATURE_MODEM_EC25
+ 		    || modem_code==IH_FEATURE_MODEM_RM500
++		    || modem_code==IH_FEATURE_MODEM_RM520N
+ 		    || modem_code==IH_FEATURE_MODEM_RM500U
+ 		    || modem_code==IH_FEATURE_MODEM_RG500
+ 		    || modem_code==IH_FEATURE_MODEM_EP06
+@@ -1816,6 +1829,7 @@ void modem_dualsim_switch(uint64_t modem_code, int idx)
+         int value;
+ 	
+ 	if(modem_code==IH_FEATURE_MODEM_RM500
++		|| modem_code==IH_FEATURE_MODEM_RM520N
+ 		|| modem_code==IH_FEATURE_MODEM_FM650
+ 		|| modem_code==IH_FEATURE_MODEM_RM500U
+ 		|| modem_code==IH_FEATURE_MODEM_RG500
+@@ -1838,6 +1852,7 @@ void modem_dualsim_switch(uint64_t modem_code, int idx)
+ #endif
+ 
+ 	if(modem_code==IH_FEATURE_MODEM_RM500
++		|| modem_code==IH_FEATURE_MODEM_RM520N
+ 		|| modem_code==IH_FEATURE_MODEM_FM650
+ 		|| modem_code==IH_FEATURE_MODEM_RM500U
+ 		|| modem_code==IH_FEATURE_MODEM_RG500
+@@ -2092,7 +2107,8 @@ int check_modem_basic_info(MODEM_INFO *info)
+ 	//Software version
+ 	if(gl_modem_code == IH_FEATURE_MODEM_RM500U){
+ 		pcmd = find_at_cmd(AT_CMD_GMR);
+-	}else if(gl_modem_code == IH_FEATURE_MODEM_RM500){
++	}else if(gl_modem_code == IH_FEATURE_MODEM_RM500
++		|| gl_modem_code == IH_FEATURE_MODEM_RM520N){
+ 		pcmd = find_at_cmd(AT_CMD_QGMR);
+ 	}else{
+ 		pcmd = find_at_cmd(AT_CMD_CGMR);
+@@ -2215,6 +2231,7 @@ static int process_unlock_modem(void)
+ 		case IH_FEATURE_MODEM_EC20:
+ 		case IH_FEATURE_MODEM_EC25:
+ 		case IH_FEATURE_MODEM_RM500:
++		case IH_FEATURE_MODEM_RM520N:
+ 		case IH_FEATURE_MODEM_RG500:
+ 		case IH_FEATURE_MODEM_EP06:
+ 			pcmd = find_at_cmd(AT_CMD_CLCK);
+@@ -3814,6 +3831,7 @@ int check_modem_reg(AT_CMD *pcmd, char *buf, int retry, MODEM_CONFIG *config, MO
+ 						|| ih_license_get_modem() == IH_FEATURE_MODEM_EC20
+ 						|| ih_license_get_modem() == IH_FEATURE_MODEM_EC25
+ 						|| ih_license_get_modem() == IH_FEATURE_MODEM_RM500
++						|| ih_license_get_modem() == IH_FEATURE_MODEM_RM520N
+ 						|| ih_license_get_modem() == IH_FEATURE_MODEM_RM500U
+ 						|| ih_license_get_modem() == IH_FEATURE_MODEM_RG500
+ 						|| ih_license_get_modem() == IH_FEATURE_MODEM_FM650
+@@ -3947,6 +3965,10 @@ int check_rm500u_pcie_mode(char *dev, int mode, int verbose)
+ 		return -1;
+ 	}
+ 
++	if(ih_license_support(IH_FEATURE_PCIE2ETH_RTL8125B)){
++		return -1;
++	}
++
+ 	//RM500UCNAAR01A17M2G_01.001.01.0
+ 	if(strlen(info->software_version) < 16){
+ 		//should return if software version is unknown
+@@ -4031,6 +4053,64 @@ int check_fm650_ippass(char *dev, int verbose)
+ 	return ippass;
+ }
+ 
++int check_rm520n_eth_setting(char *dev, int verbose)
++{
++	char cmd[256] = {0};
++	char rsp[512] = {0};
++	char *p = NULL;
++	int pcie_mode = 1; //RC mode
++	int reboot = 0;
++	int ret = ERR_AT_NAK;
++	MODEM_INFO *info = &gl_myinfo.svcinfo.modem_info;
++
++	if(!dev || !dev[0]){
++		return reboot;
++	}
++
++	//check pcie mode
++	send_at_cmd_sync(dev, "AT+QCFG=\"pcie/mode\"\r\n", rsp, sizeof(rsp), verbose);
++	if((p = strstr(rsp, "+QCFG:"))){
++		strsep(&p, ",");
++		if(p && atoi(p) != pcie_mode){
++			LOG_IN("change pcie mode to %s mode", pcie_mode ? "RC" : "EP");
++			snprintf(cmd, sizeof(cmd), "AT+QCFG=\"pcie/mode\",%d\r\n", pcie_mode);
++			if(ERR_AT_OK == send_at_cmd_sync(dev, cmd, NULL, 0, verbose)){
++				reboot++;
++			}
++		}
++	}
++
++	memset(cmd, 0, sizeof(cmd));
++	memset(rsp, 0, sizeof(rsp));
++
++	//check sfe
++	send_at_cmd_sync_timeout(dev, "AT+QMAP=\"SFE\"\r\n", rsp, sizeof(rsp), verbose, "OK", 10000);
++	if((p = strstr(rsp, "+QMAP:"))){
++		strsep(&p, ",");
++		if(p && !strstr(p, "enable")){
++			LOG_IN("enable modem sfe");
++			send_at_cmd_sync(dev, "AT+QMAP=\"SFE\",\"enable\"\r\n", NULL, 0, verbose);
++		}
++	}
++
++	memset(cmd, 0, sizeof(cmd));
++	memset(rsp, 0, sizeof(rsp));
++
++	//check eth driver
++	send_at_cmd_sync(dev, "AT+QETH=\"eth_driver\"\r\n", rsp, sizeof(rsp), verbose);
++	if((p = strstr(rsp, "r8125"))){
++		strsep(&p, ",");
++		if(p && atoi(p) != 1){
++			LOG_IN("enable modem rtl8125 eth driver");
++			if(ERR_AT_OK == send_at_cmd_sync(dev, "AT+QETH=\"eth_driver\",\"r8125\",1\r\n", NULL, 0, verbose)){
++				reboot++;
++			}
++		}
++	}
++
++	return reboot;
++}
++
+ static BOOL match_dynamic_ip6_addr(char *ip6_str)
+ {
+ 	int i;
+@@ -4110,6 +4190,34 @@ leave:
+ 	return status;
+ }
+ 
++int check_modem_mpdn_status(AT_CMD *pcmd, char *buf, int retry, MODEM_CONFIG *config, MODEM_INFO *info)
++{
++	char cmd[128] = {0};
++	char rsp[512] = {0};
++	char *p = NULL;
++	int rule_num = -1;
++	int profileid = 0;
++	int ippt = 0;
++	int connect = 0;
++
++	//+QMAP: "MPDN_status",0,1,1,1
++	p = strstr(buf, pcmd->resp);
++	if(p){
++		p += strlen(pcmd->resp);
++		/*if have ' ', eat it.*/
++		while(*p!=0 && *p==' ') p++;
++		//take care of channel 0
++		if(sscanf(p, "\"MPDN_status\",%d,%d,%d,%d", &rule_num, &profileid, &ippt, &connect) != 4 || connect != 1){
++			LOG_IN("MPDN rule 0 status is %s", connect ? "connected" : "disconnected");
++			return ERR_FAILED;
++		}
++	}else{
++		return ERR_FAILED;
++	}
++
++	return ERR_OK;
++}
++
+ AT_CMD *get_at_from_custom_cmds(int net_type)
+ {
+ 	int index = -1;
+@@ -5447,6 +5555,52 @@ int check_modem_cgpaddr_status(AT_CMD *pcmd, char *buf, int retry, MODEM_CONFIG
+ 	return ERR_AT_OK;
+ }
+ 
++int check_modem_cgpaddr(AT_CMD *pcmd, char *buf, int retry, MODEM_CONFIG *config, MODEM_INFO *info)
++{
++	int cid = -1;
++	char *p = NULL;
++	char ipv4_s[16] = {0};
++	char ipv6_s[64] = {0};
++	VIF_INFO *pinfo = &(gl_myinfo.svcinfo.vif_info);
++
++	if(!pcmd){
++		return ERR_INVAL;
++	}
++
++	//+CGPADDR: 1,"10.83.237.147","36.8.132.105.3.0.13.212.23.92.135.164.184.168.39.99"
++	//+CGPADDR: 1,"10.130.113.53,36.8.132.105.3.80.86.243.23.93.93.2.66.79.157.154"
++	p = strstr(buf, pcmd->resp);
++	if(p){
++		p += strlen(pcmd->resp);
++		/*if have ' ', eat it.*/
++		while(*p!=0 && *p==' ') p++;
++
++		if(sscanf(p, "%d,\"%[0-9.],%[0-9.]\"", &cid, ipv4_s, ipv6_s) == 3 && cid == gl.default_cid){
++			goto leave;
++		}
++
++		if(sscanf(p, "%d,\"%[0-9.]\",\"%[0-9.]\"", &cid, ipv4_s, ipv6_s) == 3 && cid == gl.default_cid){
++			goto leave;
++		}
++	}
++
++	return ERR_AT_NOVALIDIP;
++
++leave:
++	if(VIF_IS_LINK(pinfo->status)){
++		if(strcmp(inet_ntoa(pinfo->local_ip), ipv4_s)){
++			LOG_IN("IP address was changed, we are using %s, the newest IP is %s", inet_ntoa(pinfo->local_ip), ipv4_s);
++			return ERR_AT_NOVALIDIP;
++		}
++		return strcmp(inet_ntoa(pinfo->local_ip), ipv4_s);
++	}else if(strncmp(ipv4_s, "0.0.0.0", 7) || strncmp(ipv6_s, "0.0.0.0", 7)){
++		//do nothing
++	}else{
++		return ERR_AT_NOVALIDIP;
++	}
++
++	return ERR_AT_OK;
++}
+ 
+ int check_ublox_umnoconf(AT_CMD *pcmd, char *buf, int retry, MODEM_CONFIG *config, MODEM_INFO *info) 
+ {
+@@ -5570,7 +5724,7 @@ int enable_ipv4v6_for_tmobile_profile(char *dev, int verbose)
+ 		return -1;
+ 	}
+ 
+-	if(ih_key_support("NRQ3")){
++	if(ih_key_support("NRQ3") && gl_modem_code == IH_FEATURE_MODEM_RM500){
+ 		pcmd = find_at_cmd(AT_CMD_QCPRFMOD);
+ 		if(pcmd){
+ 			ret = send_at_cmd_sync3(dev, pcmd->atc, NULL, 0, verbose);
+@@ -5595,6 +5749,7 @@ int enable_modem_auto_time_zone_update(char *dev, int verbose)
+ 		|| gl_modem_code == IH_FEATURE_MODEM_EC20
+ 		|| gl_modem_code == IH_FEATURE_MODEM_EC25
+ 		|| gl_modem_code == IH_FEATURE_MODEM_RM500
++		|| gl_modem_code == IH_FEATURE_MODEM_RM520N
+ 		|| gl_modem_code == IH_FEATURE_MODEM_RM500U
+ 		|| gl_modem_code == IH_FEATURE_MODEM_RG500
+ 		|| gl_modem_code == IH_FEATURE_MODEM_EP06
+@@ -5667,6 +5822,7 @@ int check_nr5g_mode(char *dev, int verbose)
+ 	}
+ 
+ 	if(gl_modem_code == IH_FEATURE_MODEM_RM500
++		|| gl_modem_code == IH_FEATURE_MODEM_RM520N
+ 		|| gl_modem_code == IH_FEATURE_MODEM_RG500){
+ 		pcmd = find_at_cmd(AT_CMD_QNR5G_MODE);
+ 	}
+diff --git a/redial/modem.h b/redial/modem.h
+index 93443470..7caa2c5d 100755
+--- a/redial/modem.h
++++ b/redial/modem.h
+@@ -205,6 +205,7 @@ enum{
+ 	AT_CMD_CAVIMS,
+ 	AT_CMD_CAVIMS0,
+ 	AT_CMD_QCPRFMOD,
++	AT_CMD_MPDN_STATUS,
+ 	AT_CMD_QLTS,
+ 	AT_CMD_QCFG_IMS,
+ 	AT_CMD_QCFG_IMS2,
+diff --git a/redial/redial.h b/redial/redial.h
+index 7104bb65..20b23b86 100644
+--- a/redial/redial.h
++++ b/redial/redial.h
+@@ -83,6 +83,7 @@ typedef struct {
+ #define PCIE0_WWAN	"pcie0"
+ #define WWAN0_BASE	WWAN0_WWAN
+ #define RMNET_MHI0_BASE	"rmnet_mhi0"
++#define APN1_WWAN	"apn1"
+ 
+ #define WWAN_PORT_CELLULAR1     1
+ #define WWAN_PORT_CELLULAR2     2
+@@ -94,4 +95,10 @@ typedef struct {
+ 
+ #define IDENT		"redial"
+ 
++typedef struct {
++	int default_cid;
++}MY_GLOBAL;
++
++extern MY_GLOBAL gl;
++
+ #endif//_REDIAL_H_

@@ -1,0 +1,1326 @@
+Archive member included to satisfy reference by file (symbol)
+
+/opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/libc_nonshared.a(elf-init.oS)
+                              /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/crt1.o (__libc_csu_init)
+
+Allocating common symbols
+Common symbol       size              file
+
+gl_myinfo           0x3428            .obj/ih_redial.o
+sim_data_usage      0x50              .obj/ih_redial.o
+gl_at_lists         0x4               .obj/ih_redial.o
+g_ev_factory_modem_tmr
+                    0x48              .obj/redial_factory.o
+
+Discarded input sections
+
+ .note.GNU-stack
+                0x0000000000000000        0x0 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/crt1.o
+ .reginfo       0x0000000000000000       0x18 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/crti.o
+ .MIPS.abiflags
+                0x0000000000000000       0x18 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/crti.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/crti.o
+ .reginfo       0x0000000000000000       0x18 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/crtbegin.o
+ .MIPS.abiflags
+                0x0000000000000000       0x18 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/crtbegin.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/crtbegin.o
+ .reginfo       0x0000000000000000       0x18 .obj/ih_redial.o
+ .MIPS.abiflags
+                0x0000000000000000       0x18 .obj/ih_redial.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 .obj/ih_redial.o
+ .reginfo       0x0000000000000000       0x18 .obj/modem.o
+ .MIPS.abiflags
+                0x0000000000000000       0x18 .obj/modem.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 .obj/modem.o
+ .reginfo       0x0000000000000000       0x18 .obj/ppp.o
+ .MIPS.abiflags
+                0x0000000000000000       0x18 .obj/ppp.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 .obj/ppp.o
+ .reginfo       0x0000000000000000       0x18 .obj/operator.o
+ .MIPS.abiflags
+                0x0000000000000000       0x18 .obj/operator.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 .obj/operator.o
+ .reginfo       0x0000000000000000       0x18 .obj/sms.o
+ .MIPS.abiflags
+                0x0000000000000000       0x18 .obj/sms.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 .obj/sms.o
+ .reginfo       0x0000000000000000       0x18 .obj/pdu.o
+ .MIPS.abiflags
+                0x0000000000000000       0x18 .obj/pdu.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 .obj/pdu.o
+ .reginfo       0x0000000000000000       0x18 .obj/mbim.o
+ .MIPS.abiflags
+                0x0000000000000000       0x18 .obj/mbim.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 .obj/mbim.o
+ .reginfo       0x0000000000000000       0x18 .obj/redial_factory.o
+ .MIPS.abiflags
+                0x0000000000000000       0x18 .obj/redial_factory.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 .obj/redial_factory.o
+ .reginfo       0x0000000000000000       0x18 .obj/redial_cloud_web.o
+ .MIPS.abiflags
+                0x0000000000000000       0x18 .obj/redial_cloud_web.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 .obj/redial_cloud_web.o
+ .reginfo       0x0000000000000000       0x18 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/libc_nonshared.a(elf-init.oS)
+ .MIPS.abiflags
+                0x0000000000000000       0x18 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/libc_nonshared.a(elf-init.oS)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/libc_nonshared.a(elf-init.oS)
+ .reginfo       0x0000000000000000       0x18 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/crtend.o
+ .MIPS.abiflags
+                0x0000000000000000       0x18 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/crtend.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/crtend.o
+ .reginfo       0x0000000000000000       0x18 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/crtn.o
+ .MIPS.abiflags
+                0x0000000000000000       0x18 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/crtn.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/crtn.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/crt1.o
+LOAD /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/crti.o
+LOAD /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/crtbegin.o
+LOAD .obj/ih_redial.o
+LOAD .obj/modem.o
+LOAD .obj/ppp.o
+LOAD .obj/operator.o
+LOAD .obj/sms.o
+LOAD .obj/pdu.o
+LOAD .obj/mbim.o
+LOAD .obj/redial_factory.o
+LOAD .obj/redial_cloud_web.o
+LOAD /home/jx/ER6/system/install/ER6-ramips-mt7621/usr/lib/libpcre.so
+LOAD /home/jx/ER6/system/install-base/ER6-ramips-mt7621/lib/libm.so
+LOAD /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/librt.so
+LOAD /home/jx/ER6/system/install-base/ER6-ramips-mt7621/lib/libatomic.so
+LOAD /home/jx/ER6/system/install/ER6-ramips-mt7621/usr/lib/libmnl.so
+LOAD /home/jx/ER6/system/install/ER6-ramips-mt7621/usr/lib/libnftnl.so
+LOAD /home/jx/ER6/system/install/ER6-ramips-mt7621/usr/lib/libnl-genl-3.so
+LOAD /home/jx/ER6/system/install/ER6-ramips-mt7621/usr/lib/libnl-3.so
+LOAD /home/jx/ER6/system/install-base/ER6-ramips-mt7621/lib/libresolv.so
+LOAD /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/libpthread.so
+START GROUP
+LOAD /home/jx/ER6/system/install-base/ER6-ramips-mt7621/lib/libpthread.so.0
+LOAD /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/libpthread_nonshared.a
+END GROUP
+LOAD /home/jx/ER6/system/install-base/ER6-ramips-mt7621/lib/libdl.so
+LOAD /home/jx/ER6/system/install/ER6-ramips-mt7621/usr/lib/libuuid.so
+LOAD /home/jx/ER6/system/install/ER6-ramips-mt7621/usr/lib/libipc.so
+LOAD /home/jx/ER6/system/install/ER6-ramips-mt7621/usr/lib/libshared.so
+LOAD /home/jx/ER6/system/install/ER6-ramips-mt7621/usr/lib/libischip.so
+LOAD /home/jx/ER6/system/install-base/ER6-ramips-mt7621/lib/libdl.so
+LOAD /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/libpthread.so
+START GROUP
+LOAD /home/jx/ER6/system/install-base/ER6-ramips-mt7621/lib/libpthread.so.0
+LOAD /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/libpthread_nonshared.a
+END GROUP
+LOAD /home/jx/ER6/system/install/ER6-ramips-mt7621/usr/lib/libevent.so
+LOAD /home/jx/ER6/system/install-base/ER6-ramips-mt7621/lib/libnsl.so
+LOAD /home/jx/ER6/system/install-base/ER6-ramips-mt7621/lib/libm.so
+LOAD /home/jx/ER6/system/install/ER6-ramips-mt7621/usr/lib/libjansson.so
+LOAD /home/jx/ER6/system/install/ER6-ramips-mt7621/usr/lib/libmosquitto.so
+LOAD /home/jx/ER6/system/install/ER6-ramips-mt7621/usr/lib/libmosq.so
+LOAD /home/jx/ER6/system/install/ER6-ramips-mt7621/usr/lib/libssl.so
+LOAD /home/jx/ER6/system/install/ER6-ramips-mt7621/usr/lib/libcares.so
+LOAD /home/jx/ER6/system/install/ER6-ramips-mt7621/usr/lib/libcrypto.so
+LOAD /home/jx/ER6/system/iproute2/lib/libnetlink.a
+LOAD /home/jx/ER6/system/iproute2/lib/libutil.a
+LOAD /home/jx/ER6/system/install/ER6-ramips-mt7621/usr/lib/libipc.so
+LOAD /home/jx/ER6/system/install/ER6-ramips-mt7621/usr/lib/libshared.so
+LOAD /home/jx/ER6/system/install/ER6-ramips-mt7621/usr/lib/libischip.so
+LOAD /home/jx/ER6/system/install-base/ER6-ramips-mt7621/lib/libdl.so
+LOAD /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/libpthread.so
+START GROUP
+LOAD /home/jx/ER6/system/install-base/ER6-ramips-mt7621/lib/libpthread.so.0
+LOAD /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/libpthread_nonshared.a
+END GROUP
+LOAD /home/jx/ER6/system/install/ER6-ramips-mt7621/usr/lib/libevent.so
+LOAD /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/libpthread.so
+START GROUP
+LOAD /home/jx/ER6/system/install-base/ER6-ramips-mt7621/lib/libpthread.so.0
+LOAD /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/libpthread_nonshared.a
+END GROUP
+LOAD /home/jx/ER6/system/install-base/ER6-ramips-mt7621/lib/libdl.so
+LOAD /home/jx/ER6/system/install/ER6-ramips-mt7621/usr/lib/libmosquitto.so
+LOAD /home/jx/ER6/system/install/ER6-ramips-mt7621/usr/lib/libmosq.so
+LOAD /home/jx/ER6/system/install/ER6-ramips-mt7621/usr/lib/libssl.so
+LOAD /home/jx/ER6/system/install/ER6-ramips-mt7621/usr/lib/libcares.so
+LOAD /home/jx/ER6/system/install/ER6-ramips-mt7621/usr/lib/libcrypto.so
+LOAD /home/jx/ER6/system/install/ER6-ramips-mt7621/usr/lib/libuuid.so
+LOAD /home/jx/ER6/system/install/ER6-ramips-mt7621/usr/lib/libjansson.so
+LOAD /home/jx/ER6/system/install-base/ER6-ramips-mt7621/lib/libm.so
+LOAD /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/libgcc_s.so
+START GROUP
+LOAD /home/jx/ER6/system/install-base/ER6-ramips-mt7621/lib/libgcc_s.so.1
+LOAD /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/libgcc.a
+END GROUP
+LOAD /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/libc.so
+START GROUP
+LOAD /home/jx/ER6/system/install-base/ER6-ramips-mt7621/lib/libc.so.6
+LOAD /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/libc_nonshared.a
+LOAD /home/jx/ER6/system/install-base/ER6-ramips-mt7621/lib/ld.so.1
+END GROUP
+LOAD /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/libgcc_s.so
+START GROUP
+LOAD /home/jx/ER6/system/install-base/ER6-ramips-mt7621/lib/libgcc_s.so.1
+LOAD /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/libgcc.a
+END GROUP
+LOAD /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/crtend.o
+LOAD /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/crtn.o
+                [!provide]                        PROVIDE (__executable_start = SEGMENT_START ("text-segment", 0x400000))
+                0x0000000000400174                . = (SEGMENT_START ("text-segment", 0x400000) + SIZEOF_HEADERS)
+
+.interp         0x0000000000400174        0xd
+ *(.interp)
+ .interp        0x0000000000400174        0xd /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/crt1.o
+
+.note.ABI-tag   0x0000000000400184       0x20
+ .note.ABI-tag  0x0000000000400184       0x20 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/crt1.o
+
+.MIPS.abiflags  0x00000000004001a8       0x18
+ *(.MIPS.abiflags)
+ .MIPS.abiflags
+                0x00000000004001a8       0x18 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/crt1.o
+
+.reginfo        0x00000000004001c0       0x18
+ *(.reginfo)
+ .reginfo       0x00000000004001c0       0x18 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/crt1.o
+
+.note.gnu.build-id
+ *(.note.gnu.build-id)
+
+.dynamic        0x00000000004001d8      0x1c0
+ *(.dynamic)
+ .dynamic       0x00000000004001d8      0x1c0 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/crt1.o
+                0x00000000004001d8                _DYNAMIC
+
+.hash           0x0000000000400398      0xafc
+ *(.hash)
+ .hash          0x0000000000400398      0xafc /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/crt1.o
+
+.gnu.hash
+ *(.gnu.hash)
+
+.dynsym         0x0000000000400e94     0x1b60
+ *(.dynsym)
+ .dynsym        0x0000000000400e94     0x1b60 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/crt1.o
+
+.dynstr         0x00000000004029f4     0x1c8e
+ *(.dynstr)
+ .dynstr        0x00000000004029f4     0x1c8e /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/crt1.o
+
+.gnu.version    0x0000000000404682      0x36c
+ *(.gnu.version)
+ .gnu.version   0x0000000000404682      0x36c /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/crt1.o
+
+.gnu.version_d  0x00000000004049f0        0x0
+ *(.gnu.version_d)
+ .gnu.version_d
+                0x00000000004049f0        0x0 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/crt1.o
+
+.gnu.version_r  0x00000000004049f0       0x80
+ *(.gnu.version_r)
+ .gnu.version_r
+                0x00000000004049f0       0x80 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/crt1.o
+
+.rel.dyn        0x0000000000404a70        0x0
+ *(.rel.init)
+ *(.rel.text .rel.text.* .rel.gnu.linkonce.t.*)
+ *(.rel.fini)
+ *(.rel.rodata .rel.rodata.* .rel.gnu.linkonce.r.*)
+ *(.rel.data.rel.ro .rel.data.rel.ro.* .rel.gnu.linkonce.d.rel.ro.*)
+ .rel.data.rel.ro
+                0x0000000000404a70        0x0 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/crt1.o
+ *(.rel.data .rel.data.* .rel.gnu.linkonce.d.*)
+ *(.rel.tdata .rel.tdata.* .rel.gnu.linkonce.td.*)
+ *(.rel.tbss .rel.tbss.* .rel.gnu.linkonce.tb.*)
+ *(.rel.ctors)
+ *(.rel.dtors)
+ *(.rel.got)
+ *(.rel.dyn)
+ .rel.dyn       0x0000000000404a70        0x0 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/crt1.o
+ *(.rel.sdata .rel.sdata.* .rel.gnu.linkonce.s.*)
+ *(.rel.sbss .rel.sbss.* .rel.gnu.linkonce.sb.*)
+ *(.rel.sdata2 .rel.sdata2.* .rel.gnu.linkonce.s2.*)
+ *(.rel.sbss2 .rel.sbss2.* .rel.gnu.linkonce.sb2.*)
+ *(.rel.bss .rel.bss.* .rel.gnu.linkonce.b.*)
+ .rel.bss       0x0000000000404a70        0x0 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/crt1.o
+                [!provide]                        PROVIDE (__rel_iplt_start = .)
+ *(.rel.iplt)
+                [!provide]                        PROVIDE (__rel_iplt_end = .)
+
+.rela.dyn       0x0000000000404a70        0x0
+ *(.rela.init)
+ *(.rela.text .rela.text.* .rela.gnu.linkonce.t.*)
+ *(.rela.fini)
+ *(.rela.rodata .rela.rodata.* .rela.gnu.linkonce.r.*)
+ *(.rela.data .rela.data.* .rela.gnu.linkonce.d.*)
+ *(.rela.tdata .rela.tdata.* .rela.gnu.linkonce.td.*)
+ *(.rela.tbss .rela.tbss.* .rela.gnu.linkonce.tb.*)
+ *(.rela.ctors)
+ *(.rela.dtors)
+ *(.rela.got)
+ *(.rela.sdata .rela.sdata.* .rela.gnu.linkonce.s.*)
+ *(.rela.sbss .rela.sbss.* .rela.gnu.linkonce.sb.*)
+ *(.rela.sdata2 .rela.sdata2.* .rela.gnu.linkonce.s2.*)
+ *(.rela.sbss2 .rela.sbss2.* .rela.gnu.linkonce.sb2.*)
+ *(.rela.bss .rela.bss.* .rela.gnu.linkonce.b.*)
+                [!provide]                        PROVIDE (__rela_iplt_start = .)
+ *(.rela.iplt)
+                [!provide]                        PROVIDE (__rela_iplt_end = .)
+
+.rel.plt        0x0000000000404a70        0x8
+ *(.rel.plt)
+ .rel.plt       0x0000000000404a70        0x8 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/crt1.o
+
+.rela.plt
+ *(.rela.plt)
+
+.init           0x0000000000404a78       0x78
+ *(SORT_NONE(.init))
+ .init          0x0000000000404a78       0x38 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/crti.o
+                0x0000000000404a78                _init
+ .init          0x0000000000404ab0       0x18 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/crtbegin.o
+ .init          0x0000000000404ac8       0x18 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/crtend.o
+ .init          0x0000000000404ae0       0x10 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/crtn.o
+
+.text           0x0000000000404af0    0x3eaa0
+                0x0000000000404af0                _ftext = .
+ *(.text.unlikely .text.*_unlikely .text.unlikely.*)
+ .text.unlikely
+                0x0000000000404af0       0xc0 .obj/modem.o
+ *(.text.exit .text.exit.*)
+ *(.text.startup .text.startup.*)
+ .text.startup  0x0000000000404bb0     0x15dc .obj/ih_redial.o
+                0x0000000000404bb0                main
+ *(.text.hot .text.hot.*)
+ *(.text .stub .text.* .gnu.linkonce.t.*)
+ *fill*         0x000000000040618c        0x4 
+ .text          0x0000000000406190       0x60 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/crt1.o
+                0x0000000000406190                __start
+ .text          0x00000000004061f0        0x0 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/crti.o
+ .text          0x00000000004061f0       0xb0 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/crtbegin.o
+ .text          0x00000000004062a0    0x1f370 .obj/ih_redial.o
+                0x0000000000409910                get_modem_code
+                0x000000000040b274                clear_csq_policy
+                0x000000000040b2e8                dualsim_handle_backuptimer
+                0x000000000040b370                get_redial_state
+                0x000000000040b390                enable_dual_sim
+                0x000000000040b3ac                redl_iface_clear_addresses
+                0x000000000040b448                redl_iface_update_state
+                0x000000000040b750                save_unsent_sms
+                0x000000000040b834                purge_saved_sms
+                0x000000000040b890                resend_unsent_sms
+                0x000000000040b970                my_restart_timer
+                0x000000000040bc30                handle_at_cmd
+                0x000000000040bd1c                handle_at_cmd_by_id
+                0x000000000040bd70                sim_traffic_status_update
+                0x000000000040bdc4                show_data_usage
+                0x000000000040bf14                get_data_usage_info
+                0x000000000040c090                check_sim_status
+                0x000000000040c208                find_at_cmd2
+                0x000000000040c320                qmi_proxy_is_running
+                0x000000000040c37c                start_ih_qmi_proxy
+                0x000000000040c428                stop_ih_qmi_proxy
+                0x000000000040c4d8                stop_ppp
+                0x000000000040c550                stop_dhcpc
+                0x000000000040c5b0                stop_ih_qmi
+                0x000000000040c618                stop_mipc_wwan
+                0x000000000040c638                start_mipc_wwan
+                0x000000000040c8a8                stop_all_child_by_pidfile
+                0x000000000040cb24                get_modem_config
+                0x000000000040cb3c                my_get_reidal_vif_info
+                0x000000000040cb54                ppp_debug
+                0x000000000040cb74                dual_apn_is_enabled
+                0x000000000040cbc0                allow_reboot
+                0x000000000040cbe0                get_sub_deamon_type
+                0x000000000040cf44                stop_child_by_sub_daemon
+                0x000000000040d0c0                do_redial_procedure
+                0x000000000040d240                handle_sim_data_usage
+                0x000000000040d5f8                change_redial_state
+                0x000000000040dc7c                get_sub_deamon_name
+                0x0000000000411528                is_vzw_sim
+                0x00000000004115d0                get_pdp_type_setting
+                0x0000000000411648                start_dhcpc
+                0x0000000000411be8                start_ih_qmi
+                0x0000000000414020                check_ublox_mno_config
+                0x0000000000414194                modem_enter_airplane_mode
+                0x000000000041a63c                redial_modem_set_cfun_mode
+                0x000000000041a748                redial_els_modem_function_reset
+                0x000000000041a94c                redial_modem_function_reset
+                0x000000000041aad0                redial_modem_re_register
+                0x000000000041ac3c                redial_modem_de_register
+                0x000000000041ad04                redial_modem_force_register
+                0x000000000041c4d8                auto_select_net_apn
+                0x000000000041d2a4                wpd200_nai_setup
+                0x000000000041d460                wpd200_get_nai_username
+                0x000000000041d5e0                check_cur_apn_cfg_by_cid
+                0x000000000041d828                check_vzw_init_apn_by_cid
+                0x000000000041ec54                ledcon_dualsim_switch
+ .text          0x0000000000425610    0x11510 .obj/modem.o
+                0x0000000000425610                check_at
+                0x0000000000425618                check_modem_imsi
+                0x0000000000425714                check_els_sica_connection_status
+                0x0000000000425780                check_ublox_umnoconf
+                0x0000000000425870                check_modem_phonenum
+                0x0000000000425988                check_modem_mpdn_status
+                0x0000000000425ac8                check_modem_sysinfo
+                0x0000000000425f48                check_modem_ctzu_status
+                0x0000000000425ffc                check_modem_network_sel
+                0x0000000000426260                check_modem_cgmi
+                0x00000000004263a8                check_modem_cgmm
+                0x00000000004264f0                check_modem_cgmr
+                0x0000000000426638                check_modem_cgmr2
+                0x0000000000426728                check_modem_hwver
+                0x0000000000426870                check_check_sim_iccid
+                0x00000000004269f4                check_modem_imei_or_gsn
+                0x0000000000426c2c                check_modem_imei
+                0x0000000000426e3c                check_ps_attachment_status
+                0x0000000000426ec8                check_lp41_connection_status
+                0x0000000000426f74                check_ecm_connection_status
+                0x0000000000427020                check_modem_cgpaddr_status
+                0x00000000004270d0                check_modem_cgpaddr
+                0x0000000000427470                check_modem_apn_status
+                0x00000000004276e8                check_modem_cclk_update_time
+                0x0000000000427ac8                check_sim_operator
+                0x0000000000427b78                check_modem_gtrndis
+                0x0000000000427c50                check_pls8_connection_status
+                0x0000000000427cf8                check_modem_vphonenum
+                0x0000000000427e20                check_wpd200_net_code
+                0x0000000000427f78                check_ate0
+                0x0000000000427f80                check_modem_network_sel_u8300c
+                0x0000000000428378                find_at_cmd
+                0x00000000004283d0                find_at_cmd_by_name
+                0x000000000042847c                setup_custom_at_cmd
+                0x0000000000428acc                modem_init_serial
+                0x0000000000428b68                modem_read
+                0x0000000000428bdc                modem_write
+                0x0000000000428ca0                my_insmod
+                0x0000000000428e9c                usb_get_device_info
+                0x0000000000429a68                open_socket
+                0x0000000000429ce8                open_dev
+                0x0000000000429d88                device_test
+                0x0000000000429e94                find_pci_device
+                0x000000000042a08c                check_socket_device
+                0x000000000042a114                read_fd
+                0x000000000042a294                write_fd
+                0x000000000042a484                check_return2
+                0x000000000042a82c                check_modem_qcfg_ims
+                0x000000000042aa4c                check_modem_qcfg_ims2
+                0x000000000042ac68                check_modem_cavims
+                0x000000000042ae4c                check_modem_mode_pref2
+                0x000000000042b230                check_modem_ssrvset_actsrvset_10
+                0x000000000042b34c                check_return3
+                0x000000000042b474                flush_fd
+                0x000000000042b4f0                send_at_cmd_sync
+                0x000000000042b664                send_at_cmd_sync_timeout
+                0x000000000042b7dc                check_modem_nr5g_disable_mode
+                0x000000000042ba28                send_at_cmd_sync3
+                0x000000000042bb90                set_modem
+                0x000000000042d3a4                check_fg360_sim_slot
+                0x000000000042d51c                modem_dualsim_switch
+                0x000000000042d73c                modem_at_init
+                0x000000000042d744                check_modem_basic_info
+                0x000000000042d9e0                select_modem_network
+                0x000000000042d9e8                get_modem_imei_cmd
+                0x000000000042da88                get_modem_signal_cmd
+                0x000000000042db90                get_sim_iccid_cmd
+                0x000000000042dc38                check_modem_sim
+                0x000000000042e330                fixup_u8300c_at_list1
+                0x000000000042e46c                update_sig_leds
+                0x000000000042e574                update_sig_leds2
+                0x000000000042e670                compute_siglevel
+                0x000000000042e6a8                compute_signal_info
+                0x000000000042ebd0                update_srvcell_info
+                0x000000000042fce8                check_modem_signal
+                0x0000000000430290                check_modem_qeng_servingcell
+                0x0000000000430d28                check_modem_qeng_servingcell2
+                0x000000000043158c                check_modem_gtccinfo
+                0x00000000004328a0                clear_srvcell_info
+                0x0000000000432900                check_modem_reg
+                0x0000000000433194                check_modem_network
+                0x00000000004336f8                check_modem_smoni
+                0x0000000000433a50                check_wpd200_rssi_status
+                0x0000000000433c14                check_fb78_signal_status
+                0x0000000000433f60                check_lp41_signal_status
+                0x0000000000434184                check_modem_nv_parameter
+                0x00000000004345a8                check_rm500q_data_iface
+                0x0000000000434778                check_rm500u_pcie_mode
+                0x0000000000434a08                check_fm650_data_iface
+                0x0000000000434be4                check_fm650_ippass
+                0x0000000000434d50                check_rm520n_eth_setting
+                0x0000000000435230                check_modem_qnetdevstatus
+                0x0000000000435708                get_at_from_custom_cmds
+                0x0000000000435790                check_modem_nwscanmode
+                0x0000000000435a7c                check_modem_mode_pref
+                0x0000000000435ce4                check_modem_cellid
+                0x0000000000435ea0                get_band_by_arfcn
+                0x0000000000436144                check_modem_monsc
+                0x00000000004362f0                check_lp41_ipaddr_status
+                0x000000000043643c                get_modem_preferred_operator_list
+                0x000000000043665c                enable_ipv4v6_for_tmobile_profile
+                0x000000000043673c                enable_modem_auto_time_zone_update
+                0x0000000000436994                check_nr5g_mode
+ .text          0x0000000000436b20     0x1fa0 .obj/ppp.o
+                0x0000000000436c18                at_ppp_build_config
+                0x0000000000437ab0                ppp_build_config
+ .text          0x0000000000438ac0       0xd0 .obj/operator.o
+                0x0000000000438ac0                find_operator
+                0x0000000000438b34                match_vzw_plmn
+ .text          0x0000000000438b90     0x19f0 .obj/sms.o
+                0x0000000000438c34                sms_init
+                0x0000000000438df8                sms_send_text
+                0x0000000000439008                sms_send_pdu
+                0x00000000004392fc                sms_receive_one_text
+                0x0000000000439304                sms_receive_one_pdu
+                0x000000000043930c                sms_receive_batch_text
+                0x00000000004394dc                sms_receive_batch_pdu
+                0x0000000000439658                sms_delete
+                0x00000000004396f4                sms_delete_all
+                0x00000000004396fc                sms_parse_text
+                0x0000000000439e24                sms_parse_pdu
+                0x000000000043a184                sms_handle_insms
+                0x000000000043a28c                sms_handle_outsms
+                0x000000000043a2cc                pysms_handle_outsms
+ .text          0x000000000043a580      0x820 .obj/pdu.o
+                0x000000000043a580                gsmEncode7bit
+                0x000000000043a5f4                gsmDecode7bit
+                0x000000000043a67c                gsmEncode8bit
+                0x000000000043a6c4                gsmDecode8bit
+                0x000000000043a710                gsmEncodeUcs2
+                0x000000000043a718                gsmDecodeUcs2
+                0x000000000043a720                gsmString2Bytes
+                0x000000000043a7f0                gsmBytes2String
+                0x000000000043a8a0                gsmInvertNumbers
+                0x000000000043a904                gsmSerializeNumbers
+                0x000000000043a96c                gsmEncodePdu
+                0x000000000043ab6c                gsmDecodePdu
+ .text          0x000000000043ada0      0xfb0 .obj/mbim.o
+                0x000000000043ada0                build_mbim_config_file
+                0x000000000043b01c                modem_get_net_params_by_at
+                0x000000000043ba3c                mbim_start_data_connection_by_cli
+                0x000000000043bcb0                clear_mbim_child_processes
+ .text          0x000000000043bd50     0x14d0 .obj/redial_factory.o
+                0x000000000043bd50                restart_factory_modem_timer
+                0x000000000043bd90                stop_factory_modem_timer
+                0x000000000043bdb0                read_modem_imei
+                0x000000000043bef4                read_modem_version
+                0x000000000043bfdc                read_sim_status
+                0x000000000043c170                read_modem_signal
+                0x000000000043c2cc                redial_handle_enter
+                0x000000000043c4e0                redial_handle_leave
+                0x000000000043c694                my_factory_modem_timer
+                0x000000000043c700                dial_status_to_string
+                0x000000000043c77c                my_factory_cmd_handle
+ .text          0x000000000043d220     0x6270 .obj/redial_cloud_web.o
+                0x00000000004420f8                get_cellular_primary_addr6
+                0x0000000000443388                mosq_client_init
+ .text          0x0000000000443490       0xb0 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/libc_nonshared.a(elf-init.oS)
+                0x0000000000443490                __libc_csu_init
+                0x0000000000443534                __libc_csu_fini
+ .text          0x0000000000443540       0x50 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/crtend.o
+ .text          0x0000000000443590        0x0 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/crtn.o
+ *(.gnu.warning)
+ *(.mips16.fn.*)
+ *(.mips16.call.*)
+
+.MIPS.stubs     0x0000000000443590      0xcb0
+ .MIPS.stubs    0x0000000000443590      0xcb0 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/crt1.o
+                0x0000000000443590                gpio
+                0x0000000000443590                _MIPS_STUBS_
+                0x00000000004435a0                strsep@@GLIBC_2.0
+                0x00000000004435b0                waitpid@@GLIBC_2.0
+                0x00000000004435c0                open@@GLIBC_2.0
+                0x00000000004435d0                ih_ipc_register_msg_handle
+                0x00000000004435e0                event_set
+                0x00000000004435f0                trace_category_set
+                0x0000000000443600                __floatsisf@@GCC_3.0
+                0x0000000000443610                strcat@@GLIBC_2.0
+                0x0000000000443620                ih_cmd_rsp_drop_tail
+                0x0000000000443630                json_string
+                0x0000000000443640                uplink_interface_snat_set
+                0x0000000000443650                saveRtc
+                0x0000000000443660                sysinfo@@GLIBC_2.0
+                0x0000000000443670                socket@@GLIBC_2.0
+                0x0000000000443680                get_uptime
+                0x0000000000443690                _logtrace_trace
+                0x00000000004436a0                access@@GLIBC_2.0
+                0x00000000004436b0                logtrace_init
+                0x00000000004436c0                ih_ipc_free_msg
+                0x00000000004436d0                safe_fread
+                0x00000000004436e0                strstr@@GLIBC_2.0
+                0x00000000004436f0                json_integer_value
+                0x0000000000443700                json_loads
+                0x0000000000443710                str_to_ip6addr_prefixlen
+                0x0000000000443720                setsockopt@@GLIBC_2.0
+                0x0000000000443730                mosq_list_clean
+                0x0000000000443740                fopen@@GLIBC_2.2
+                0x0000000000443750                iface_add_ip6_addr
+                0x0000000000443760                iface_showrun_ip6_addr
+                0x0000000000443770                select@@GLIBC_2.0
+                0x0000000000443780                strncasecmp@@GLIBC_2.0
+                0x0000000000443790                strlcat
+                0x00000000004437a0                sleep@@GLIBC_2.0
+                0x00000000004437b0                ih_license_get_modem
+                0x00000000004437c0                netmask_aton
+                0x00000000004437d0                ih_srand
+                0x00000000004437e0                connect@@GLIBC_2.0
+                0x00000000004437f0                in_json_root_path_rollback_one
+                0x0000000000443800                ev_record_event_to_db
+                0x0000000000443810                event_add
+                0x0000000000443820                modem_support_dhcp_option_mtu
+                0x0000000000443830                getpid@@GLIBC_2.0
+                0x0000000000443840                encrypt_passwd
+                0x0000000000443850                fgets@@GLIBC_2.0
+                0x0000000000443860                trim_str
+                0x0000000000443870                fwrite@@GLIBC_2.0
+                0x0000000000443880                json_string_value
+                0x0000000000443890                memcpy@@GLIBC_2.0
+                0x00000000004438a0                get_random_hw_addr
+                0x00000000004438b0                write@@GLIBC_2.0
+                0x00000000004438c0                malloc@@GLIBC_2.0
+                0x00000000004438d0                start_daemon
+                0x00000000004438e0                ih_cmd_rsp_start
+                0x00000000004438f0                json_object_iter_key
+                0x0000000000443900                strlen@@GLIBC_2.0
+                0x0000000000443910                strlcpy
+                0x0000000000443920                usleep@@GLIBC_2.0
+                0x0000000000443930                fprintf@@GLIBC_2.0
+                0x0000000000443940                ih_license_support
+                0x0000000000443950                get_num_by_string
+                0x0000000000443960                read_pidfile
+                0x0000000000443970                vstrsep
+                0x0000000000443980                iface_set_dynamic_ip6_addr
+                0x0000000000443990                sprintf@@GLIBC_2.0
+                0x00000000004439a0                stop_or_kill
+                0x00000000004439b0                stop_odhcp6c
+                0x00000000004439c0                execv@@GLIBC_2.0
+                0x00000000004439d0                netmask_inaddr2len
+                0x00000000004439e0                safe_fwrite
+                0x00000000004439f0                update_sysinfo
+                0x0000000000443a00                event_base_set
+                0x0000000000443a10                __extendsfdf2@@GCC_3.0
+                0x0000000000443a20                in6_addr_2prefix
+                0x0000000000443a30                strcmp@@GLIBC_2.0
+                0x0000000000443a40                ih_check_interface_exist
+                0x0000000000443a50                strcasestr@@GLIBC_2.2
+                0x0000000000443a60                time@@GLIBC_2.0
+                0x0000000000443a70                vif_get_status
+                0x0000000000443a80                ledcon_by_event
+                0x0000000000443a90                __errno_location@@GLIBC_2.0
+                0x0000000000443aa0                fclose@@GLIBC_2.2
+                0x0000000000443ab0                fflush@@GLIBC_2.0
+                0x0000000000443ac0                traffic_to_string
+                0x0000000000443ad0                memcmp@@GLIBC_2.0
+                0x0000000000443ae0                flush_ip6_addr
+                0x0000000000443af0                masklen2ip
+                0x0000000000443b00                f_read
+                0x0000000000443b10                json_object
+                0x0000000000443b20                ih_ipc_publish
+                0x0000000000443b30                alarm@@GLIBC_2.0
+                0x0000000000443b40                handle_ip_passthrough_wanset
+                0x0000000000443b50                openlog@@GLIBC_2.0
+                0x0000000000443b60                json_integer
+                0x0000000000443b70                request_set_pd_label
+                0x0000000000443b80                fputs@@GLIBC_2.0
+                0x0000000000443b90                json_true
+                0x0000000000443ba0                strchr@@GLIBC_2.0
+                0x0000000000443bb0                rename@@GLIBC_2.0
+                0x0000000000443bc0                __isoc99_sscanf@@GLIBC_2.7
+                0x0000000000443bd0                iface_clear_all_ip6_addr
+                0x0000000000443be0                __mulsf3@@GCC_3.0
+                0x0000000000443bf0                signal@@GLIBC_2.0
+                0x0000000000443c00                _logtrace_log
+                0x0000000000443c10                gettimeofday@@GLIBC_2.0
+                0x0000000000443c20                json_object_key_to_iter
+                0x0000000000443c30                rand@@GLIBC_2.0
+                0x0000000000443c40                logtrace_cleanup
+                0x0000000000443c50                __ucmpdi2@@GCC_3.0
+                0x0000000000443c60                strtol@@GLIBC_2.0
+                0x0000000000443c70                json_false
+                0x0000000000443c80                ih_if_basic_display
+                0x0000000000443c90                getsockopt@@GLIBC_2.0
+                0x0000000000443ca0                f_write
+                0x0000000000443cb0                __subsf3@@GCC_3.0
+                0x0000000000443cc0                ih_ipc_send_response_ex
+                0x0000000000443cd0                json_object_iter_value
+                0x0000000000443ce0                cmdsep
+                0x0000000000443cf0                serial_set_speed
+                0x0000000000443d00                in_json_get_config_resp_msg
+                0x0000000000443d10                json_object_set_new
+                0x0000000000443d20                inet_addr@@GLIBC_2.0
+                0x0000000000443d30                free@@GLIBC_2.0
+                0x0000000000443d40                inet_pton@@GLIBC_2.0
+                0x0000000000443d50                ih_ipc_subscribe
+                0x0000000000443d60                get_str_from_if_info
+                0x0000000000443d70                start_npd6
+                0x0000000000443d80                strncmp@@GLIBC_2.0
+                0x0000000000443d90                in_mosq_clean
+                0x0000000000443da0                event_base_loopbreak
+                0x0000000000443db0                json_object_iter_next
+                0x0000000000443dc0                in_json_root_path_init
+                0x0000000000443dd0                strcasecmp@@GLIBC_2.0
+                0x0000000000443de0                second_to_day
+                0x0000000000443df0                trace_category_get
+                0x0000000000443e00                vif_link_change_register
+                0x0000000000443e10                validate_ip_mask
+                0x0000000000443e20                inet6_ntoa
+                0x0000000000443e30                json_delete
+                0x0000000000443e40                inet_ntop@@GLIBC_2.0
+                0x0000000000443e50                inet_aton@@GLIBC_2.0
+                0x0000000000443e60                get_string_by_num
+                0x0000000000443e70                printf@@GLIBC_2.0
+                0x0000000000443e80                strerror@@GLIBC_2.0
+                0x0000000000443e90                in_json_root_path_append
+                0x0000000000443ea0                ih_ipc_set_ready
+                0x0000000000443eb0                stpcpy@@GLIBC_2.0
+                0x0000000000443ec0                event_base_dispatch
+                0x0000000000443ed0                in_json_node_match
+                0x0000000000443ee0                modem_support_ipv6
+                0x0000000000443ef0                modem_support_dual_apn
+                0x0000000000443f00                strtok@@GLIBC_2.0
+                0x0000000000443f10                json_object_iter
+                0x0000000000443f20                vif_get_sys_name
+                0x0000000000443f30                in_json_node_error
+                0x0000000000443f40                syslog@@GLIBC_2.0
+                0x0000000000443f50                ih_license_init
+                0x0000000000443f60                iface_has_valid_ip6_address
+                0x0000000000443f70                f_read_string
+                0x0000000000443f80                strtoul@@GLIBC_2.0
+                0x0000000000443f90                ih_cmd_rsp_print
+                0x0000000000443fa0                memset@@GLIBC_2.0
+                0x0000000000443fb0                strftime@@GLIBC_2.0
+                0x0000000000443fc0                closelog@@GLIBC_2.0
+                0x0000000000443fd0                ih_ipc_send_ex
+                0x0000000000443fe0                fcntl@@GLIBC_2.0
+                0x0000000000443ff0                snprintf@@GLIBC_2.0
+                0x0000000000444000                close@@GLIBC_2.0
+                0x0000000000444010                write_pidfile
+                0x0000000000444020                start_odhcp6c2
+                0x0000000000444030                read@@GLIBC_2.0
+                0x0000000000444040                event_del
+                0x0000000000444050                flush_ip4_addr
+                0x0000000000444060                json_dumps
+                0x0000000000444070                ih_ipc_close
+                0x0000000000444080                clear_conntrack
+                0x0000000000444090                ih_ipc_open_ex
+                0x00000000004440a0                add_ipv6_str_interface_id_to_address
+                0x00000000004440b0                ih_cmd_dump
+                0x00000000004440c0                get_vif_by_if_info
+                0x00000000004440d0                ih_cmd_rsp_finish
+                0x00000000004440e0                flush_ipv6_scope_addr
+                0x00000000004440f0                ih_key_support
+                0x0000000000444100                unlink@@GLIBC_2.0
+                0x0000000000444110                ledcon
+                0x0000000000444120                in6_prefix_equal
+                0x0000000000444130                kill@@GLIBC_2.0
+                0x0000000000444140                inet_ntoa@@GLIBC_2.0
+                0x0000000000444150                decrypt_passwd
+                0x0000000000444160                system@@GLIBC_2.0
+                0x0000000000444170                strcpy@@GLIBC_2.0
+                0x0000000000444180                localtime@@GLIBC_2.0
+                0x0000000000444190                serial_set_parity
+                0x00000000004441a0                in_json_clear_sort_object
+                0x00000000004441b0                _eval
+                0x00000000004441c0                f_write_string
+                0x00000000004441d0                iface_clear_all_ip4_addr
+                0x00000000004441e0                json_object_get
+                0x00000000004441f0                getopt@@GLIBC_2.0
+                0x0000000000444200                ih_ipc_send_recv
+                0x0000000000444210                in_json_get_sort_object
+                0x0000000000444220                stop_npd6
+
+.fini           0x0000000000444240       0x40
+ *(SORT_NONE(.fini))
+ .fini          0x0000000000444240       0x18 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/crti.o
+                0x0000000000444240                _fini
+ .fini          0x0000000000444258       0x18 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/crtbegin.o
+ .fini          0x0000000000444270       0x10 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/crtn.o
+                [!provide]                        PROVIDE (__etext = .)
+                [!provide]                        PROVIDE (_etext = .)
+                [!provide]                        PROVIDE (etext = .)
+
+.rodata         0x0000000000444280     0x7a10
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+ .rodata.cst4   0x0000000000444280        0x4 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/crt1.o
+                0x0000000000444280                _IO_stdin_used
+ .rodata.str1.4
+                0x0000000000444284     0x411d .obj/ih_redial.o
+                                       0x41a4 (size before relaxing)
+ *fill*         0x00000000004483a1        0xf 
+ .rodata        0x00000000004483b0      0x280 .obj/ih_redial.o
+ .rodata.str1.4
+                0x0000000000448630     0x2269 .obj/modem.o
+                                       0x23d4 (size before relaxing)
+ *fill*         0x000000000044a899        0x7 
+ .rodata        0x000000000044a8a0      0x200 .obj/modem.o
+ .rodata.cst4   0x000000000044aaa0       0x18 .obj/modem.o
+ .rodata.str1.4
+                0x000000000044aab8      0x5fd .obj/ppp.o
+                                        0x638 (size before relaxing)
+ *fill*         0x000000000044b0b5        0xb 
+ .rodata        0x000000000044b0c0       0x20 .obj/ppp.o
+                0x000000000044b0c0                dialup_options
+ .rodata.str1.4
+                0x000000000044b0e0        0x4 .obj/operator.o
+ .rodata        0x000000000044b0e0      0x100 .obj/operator.o
+                0x000000000044b0e0                gl_vzw_plmn_list
+ .rodata.str1.4
+                0x000000000044b1e0      0x321 .obj/sms.o
+                                        0x334 (size before relaxing)
+ *fill*         0x000000000044b501        0x3 
+ .rodata.str1.4
+                0x000000000044b504       0x11 .obj/pdu.o
+                                         0x14 (size before relaxing)
+ *fill*         0x000000000044b515        0x3 
+ .rodata.str1.4
+                0x000000000044b518      0x1d4 .obj/mbim.o
+                                        0x29c (size before relaxing)
+ .rodata.str1.4
+                0x000000000044b6ec      0x132 .obj/redial_factory.o
+                                        0x174 (size before relaxing)
+ *fill*         0x000000000044b81e        0x2 
+ .rodata        0x000000000044b820       0x20 .obj/redial_factory.o
+ .rodata.str1.4
+                0x000000000044b840      0x3bc .obj/redial_cloud_web.o
+                                        0x4ec (size before relaxing)
+ *fill*         0x000000000044bbfc        0x4 
+ .rodata        0x000000000044bc00       0x90 .obj/redial_cloud_web.o
+
+.rodata1
+ *(.rodata1)
+
+.sdata2
+ *(.sdata2 .sdata2.* .gnu.linkonce.s2.*)
+
+.sbss2
+ *(.sbss2 .sbss2.* .gnu.linkonce.sb2.*)
+
+.eh_frame_hdr
+ *(.eh_frame_hdr)
+ *(.eh_frame_entry .eh_frame_entry.*)
+
+.eh_frame       0x000000000044bc90        0x4
+ *(.eh_frame)
+ .eh_frame      0x000000000044bc90        0x4 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/crtend.o
+ *(.eh_frame.*)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.gnu_extab
+ *(.gnu_extab*)
+
+.exception_ranges
+ *(.exception_ranges .exception_ranges*)
+
+.plt            0x000000000044bca0       0x30
+ *(.plt)
+ *fill*         0x000000000044bca0        0x0 
+ .plt           0x000000000044bca0       0x30 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/crt1.o
+                0x000000000044bca0                _PROCEDURE_LINKAGE_TABLE_
+                0x000000000044bcc0                __libc_start_main@@GLIBC_2.0
+
+.iplt
+ *(.iplt)
+                0x000000000045c000                . = DATA_SEGMENT_ALIGN (CONSTANT (MAXPAGESIZE), CONSTANT (COMMONPAGESIZE))
+
+.eh_frame
+ *(.eh_frame)
+ *(.eh_frame.*)
+
+.gnu_extab
+ *(.gnu_extab)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.exception_ranges
+ *(.exception_ranges .exception_ranges*)
+
+.tdata          0x000000000045c000        0x0
+                [!provide]                        PROVIDE (__tdata_start = .)
+ *(.tdata .tdata.* .gnu.linkonce.td.*)
+
+.tbss
+ *(.tbss .tbss.* .gnu.linkonce.tb.*)
+ *(.tcommon)
+
+.preinit_array  0x000000000045c000        0x0
+                [!provide]                        PROVIDE (__preinit_array_start = .)
+ *(.preinit_array)
+                [!provide]                        PROVIDE (__preinit_array_end = .)
+
+.init_array     0x000000000045c000        0x0
+                0x000000000045c000                PROVIDE (__init_array_start = .)
+ *(SORT_BY_INIT_PRIORITY(.init_array.*) SORT_BY_INIT_PRIORITY(.ctors.*))
+ *(.init_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .ctors)
+                0x000000000045c000                PROVIDE (__init_array_end = .)
+
+.fini_array     0x000000000045c000        0x0
+                [!provide]                        PROVIDE (__fini_array_start = .)
+ *(SORT_BY_INIT_PRIORITY(.fini_array.*) SORT_BY_INIT_PRIORITY(.dtors.*))
+ *(.fini_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .dtors)
+                [!provide]                        PROVIDE (__fini_array_end = .)
+
+.ctors          0x000000000045c000        0x8
+ *crtbegin.o(.ctors)
+ .ctors         0x000000000045c000        0x4 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/crtbegin.o
+ *crtbegin?.o(.ctors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .ctors)
+ *(SORT_BY_NAME(.ctors.*))
+ *(.ctors)
+ .ctors         0x000000000045c004        0x4 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/crtend.o
+
+.dtors          0x000000000045c008        0x8
+ *crtbegin.o(.dtors)
+ .dtors         0x000000000045c008        0x4 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/crtbegin.o
+ *crtbegin?.o(.dtors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .dtors)
+ *(SORT_BY_NAME(.dtors.*))
+ *(.dtors)
+ .dtors         0x000000000045c00c        0x4 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/crtend.o
+                0x000000000045c00c                __DTOR_END__
+
+.jcr
+ *(.jcr)
+
+.data.rel.ro    0x000000000045c010       0x18
+ *(.data.rel.ro.local* .gnu.linkonce.d.rel.ro.local.*)
+ .data.rel.ro.local
+                0x000000000045c010       0x18 .obj/redial_cloud_web.o
+                0x000000000045c010                reqapi
+ *(.data.rel.ro .data.rel.ro.* .gnu.linkonce.d.rel.ro.*)
+ .data.rel.ro   0x000000000045c028        0x0 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/crt1.o
+                0x000000000045c028                . = DATA_SEGMENT_RELRO_END (., 0x0)
+
+.got.plt        0x000000000045c028        0xc
+ *(.got.plt)
+ .got.plt       0x000000000045c028        0xc /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/crt1.o
+
+.data           0x000000000045c040     0x9850
+                0x000000000045c040                _fdata = .
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data          0x000000000045c040       0x10 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/crt1.o
+                0x000000000045c040                data_start
+                0x000000000045c040                __data_start
+ .data          0x000000000045c050        0x0 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/crti.o
+ .data          0x000000000045c050        0x0 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/crtbegin.o
+ .data          0x000000000045c050      0x110 .obj/ih_redial.o
+                0x000000000045c0d0                gl
+                0x000000000045c0d4                gl_my_svc_id
+                0x000000000045c0d8                gl_at_fd
+                0x000000000045c0dc                gl_creg_at_lists
+                0x000000000045c0f8                gl_qmi_proxy_pid
+                0x000000000045c0fc                gl_2nd_odhcp6c_pid
+                0x000000000045c100                gl_2nd_ppp_pid
+                0x000000000045c104                gl_odhcp6c_pid
+                0x000000000045c108                gl_ppp_pid
+ .data.rel.local
+                0x000000000045c160       0x24 .obj/ih_redial.o
+                0x000000000045c160                gl_auth_type_str
+                0x000000000045c174                gl_pdp_type_str
+ *fill*         0x000000000045c184        0x4 
+ .data.rel      0x000000000045c188      0x8c0 .obj/ih_redial.o
+ *fill*         0x000000000045ca48        0x8 
+ .data          0x000000000045ca50      0x980 .obj/modem.o
+                0x000000000045cb58                u8300c_cdma_at_lists
+                0x000000000045cb88                u8300c_lte_at_lists
+                0x000000000045cbb8                gl_lte_u8300c_at_lists
+                0x000000000045cc0c                gl_lte_u8300c_at_lists_const
+                0x000000000045cc60                gl_lte_nl668_at_lists
+                0x000000000045cc9c                gl_nr_fg360_at_lists
+                0x000000000045cce0                gl_nr_fm650_at_lists
+                0x000000000045cd24                gl_ublox_toby_lte_at_lists
+                0x000000000045cd7c                gl_ublox_lara_cat1_at_lists
+                0x000000000045cdc0                gl_lte_els81_at_lists
+                0x000000000045ce00                gl_lte_els61_at_lists
+                0x000000000045ce40                gl_lte_els31_at_lists
+                0x000000000045ce90                gl_lp41_lte_at_lists
+                0x000000000045cec0                gl_wpd200_at_lists
+                0x000000000045cef4                gl_lte_mc7350_at_lists
+                0x000000000045cf1c                gl_lte_ec20_at_lists
+                0x000000000045cf68                gl_lte_ep06_at_lists
+                0x000000000045cfac                gl_nr_rm500u_at_lists
+                0x000000000045cff0                gl_nr_rm520n_at_lists
+                0x000000000045d034                gl_nr_rm500_at_lists
+                0x000000000045d078                gl_lte_ec25_at_lists
+                0x000000000045d0c4                gl_lte_u8300_at_lists
+                0x000000000045d108                gl_lte_lua10_at_lists
+                0x000000000045d144                gl_lte_me909_at_lists
+                0x000000000045d194                gl_lte_me209_at_lists
+                0x000000000045d1c8                gl_telit_lte_at_lists
+                0x000000000045d1fc                gl_lte_at_lists
+                0x000000000045d224                gl_lte_pls8_at_lists
+                0x000000000045d268                gl_evdo_pvs8_at_lists
+                0x000000000045d290                gl_hspaplus_phs8_at_lists
+                0x000000000045d2d4                gl_hspaplus_mu609_at_lists
+                0x000000000045d310                gl_hspaplus_at_lists
+                0x000000000045d344                gl_evdo_nosim_at_lists
+                0x000000000045d36c                gl_evdo_at_lists
+                0x000000000045d394                gl_wcdma_at_lists
+ .data.rel.local
+                0x000000000045d3d0     0x3528 .obj/modem.o
+                0x000000000045d3d0                gl_ublox_lara_r202_at_cmds
+                0x000000000045d5ec                gl_ublox_lara_r2_at_cmds
+                0x000000000045d808                gl_ublox_lte_at_cmds
+                0x000000000045da24                gl_u8300c_lte_at_cmds
+                0x000000000045dc40                gl_wt_evdo_at_cmds
+                0x000000000045ddf0                gl_lonsung_lte_at_cmds
+                0x000000000045e00c                gl_hw_lte_at_cmds
+                0x000000000045e294                gl_tw_at_cmds
+                0x000000000045e4b0                gl_cinterion_pls8_x_at_cmds
+                0x000000000045e738                gl_cinterion_pls8_us_at_cmds
+                0x000000000045e9c0                gl_cinterion_pls8_e_at_cmds
+                0x000000000045ec48                gl_cinterion_band_at_cmds
+                0x000000000045edf8                gl_fibocom_nl668_at_cmds
+                0x000000000045efa8                gl_fibocom_fg360_at_cmds
+                0x000000000045f230                gl_fibocom_fm650_at_cmds
+                0x000000000045f4b8                gl_quectel_ep06_at_cmds
+                0x000000000045f668                gl_quectel_rm500_at_cmds
+                0x000000000045f8f0                gl_quectel_ec25_at_cmds
+                0x000000000045fb78                gl_cinterion_cat1_us_at_cmds
+                0x000000000045fd94                gl_cinterion_cat1_e_at_cmds
+                0x000000000045ffb0                gl_cinterion_plas_xx_at_cmds
+                0x00000000004601cc                gl_cinterion_at_cmds
+                0x00000000004603e8                gl_sierra_at_cmds
+                0x0000000000460598                gl_zte_at_cmds
+                0x0000000000460748                gl_huawei_at_cmds
+ .data.rel      0x00000000004608f8     0x3450 .obj/modem.o
+                0x00000000004608f8                gl_at_cmds
+ *fill*         0x0000000000463d48        0x8 
+ .data          0x0000000000463d50        0x0 .obj/ppp.o
+ .data          0x0000000000463d50     0x1880 .obj/operator.o
+                0x0000000000463d50                operators
+ .data          0x00000000004655d0        0x0 .obj/sms.o
+ .data          0x00000000004655d0        0x0 .obj/pdu.o
+ .data          0x00000000004655d0        0x0 .obj/mbim.o
+ .data.rel.local
+                0x00000000004655d0        0xc .obj/mbim.o
+                0x00000000004655d0                auth
+ *fill*         0x00000000004655dc        0x4 
+ .data          0x00000000004655e0      0x130 .obj/redial_factory.o
+                0x00000000004655e0                gl_factory
+ .data          0x0000000000465710        0x0 .obj/redial_cloud_web.o
+ .data.rel.local
+                0x0000000000465710      0x180 .obj/redial_cloud_web.o
+                0x0000000000465710                gl_ims_mode_enum
+                0x0000000000465730                gl_nr5g_mode_enum
+                0x0000000000465750                gl_traffic_status_enum
+                0x0000000000465770                gl_net_type_enum
+                0x00000000004657a8                gl_conn_mode_enum
+                0x00000000004657c8                gl_auth_type_enum
+                0x00000000004657f8                gl_pdp_type_enum
+                0x0000000000465818                gl_sim2_profile2_enum
+                0x0000000000465830                gl_sim2_profile_enum
+                0x0000000000465848                gl_sim1_profile2_enum
+                0x0000000000465860                gl_sim1_profile_enum
+                0x0000000000465878                gl_main_sim_enum
+ .data          0x0000000000465890        0x0 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/libc_nonshared.a(elf-init.oS)
+ .data          0x0000000000465890        0x0 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/crtend.o
+ .data          0x0000000000465890        0x0 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/crtn.o
+
+.rld_map        0x0000000000465890        0x4
+ .rld_map       0x0000000000465890        0x4 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/crt1.o
+                0x0000000000465890                __RLD_MAP
+
+.data1
+ *(.data1)
+                0x0000000000465894                . = .
+                0x000000000046d890                _gp = (ALIGN (0x10) + 0x7ff0)
+
+.got            0x00000000004658a0      0x700
+ *(.got)
+ .got           0x00000000004658a0      0x700 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/crt1.o
+                0x00000000004658a0                _GLOBAL_OFFSET_TABLE_
+
+.sdata          0x0000000000465fa0        0x4
+ *(.sdata .sdata.* .gnu.linkonce.s.*)
+ .sdata         0x0000000000465fa0        0x4 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/crtbegin.o
+                0x0000000000465fa0                __dso_handle
+
+.lit8
+ *(.lit8)
+
+.lit4
+ *(.lit4)
+                0x0000000000465fa4                _edata = .
+                [!provide]                        PROVIDE (edata = .)
+                0x0000000000465fa4                . = .
+                0x0000000000465fa4                __bss_start = .
+                0x0000000000465fa4                _fbss = .
+
+.sbss           0x0000000000465fa4        0x4
+ *(.dynsbss)
+ *(.sbss .sbss.* .gnu.linkonce.sb.*)
+ *(.scommon)
+ .scommon       0x0000000000465fa4        0x4 .obj/ih_redial.o
+                0x0000000000465fa4                gl_at_lists
+
+.bss            0x0000000000465fb0    0x10940
+ *(.dynbss)
+ .dynbss        0x0000000000465fb0        0x0 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/crt1.o
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ .bss           0x0000000000465fb0        0x0 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/crt1.o
+ .bss           0x0000000000465fb0        0x0 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/crti.o
+ .bss           0x0000000000465fb0       0x10 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/crtbegin.o
+ .bss           0x0000000000465fc0     0xc3b0 .obj/ih_redial.o
+                0x0000000000465fc0                g_saved_unsent_sms
+                0x000000000046b240                pvs8_throttling_net
+                0x000000000046b244                gl_redial_dial_state
+                0x000000000046b248                gl_force_suspend
+                0x000000000046b24c                gl_modem_cfun_reset_flag
+                0x000000000046b250                gl_modem_reset_flag
+                0x000000000046b254                gl_sim_switch_flag
+                0x000000000046b258                gl_modem_code
+                0x000000000046b260                gl_ppp_redial_cnt
+                0x000000000046b264                gl_commport
+                0x000000000046b268                gl_modem_idx
+                0x000000000046b26c                gl_at_index
+ .bss           0x0000000000472370       0x10 .obj/modem.o
+                0x0000000000472370                g_modem_custom_cmds
+ .bss           0x0000000000472380        0x0 .obj/ppp.o
+ .bss           0x0000000000472380        0x0 .obj/operator.o
+ .bss           0x0000000000472380       0x20 .obj/sms.o
+ .bss           0x00000000004723a0        0x0 .obj/pdu.o
+ .bss           0x00000000004723a0        0x0 .obj/mbim.o
+ .bss           0x00000000004723a0       0x10 .obj/redial_factory.o
+                0x00000000004723a0                gl_factory_dial_state
+                0x00000000004723a4                gl_sim_switch_count
+ .bss           0x00000000004723b0     0x1080 .obj/redial_cloud_web.o
+                0x00000000004723b0                gl_need_publish
+                0x00000000004723b4                gl_need_redial
+                0x00000000004723b8                gl_sub_info
+ .bss           0x0000000000473430        0x0 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/libc_nonshared.a(elf-init.oS)
+ .bss           0x0000000000473430        0x0 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/crtend.o
+ .bss           0x0000000000473430        0x0 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/crtn.o
+ *(COMMON)
+ COMMON         0x0000000000473430     0x3478 .obj/ih_redial.o
+                0x0000000000473430                gl_myinfo
+                0x0000000000476858                sim_data_usage
+ COMMON         0x00000000004768a8       0x48 .obj/redial_factory.o
+                0x00000000004768a8                g_ev_factory_modem_tmr
+                0x00000000004768f0                . = ALIGN ((. != 0x0)?0x4:0x1)
+                0x00000000004768f0                . = ALIGN (0x4)
+                0x00000000004768f0                . = SEGMENT_START ("ldata-segment", .)
+                0x00000000004768f0                . = ALIGN (0x4)
+                0x00000000004768f0                _end = .
+                [!provide]                        PROVIDE (end = .)
+                0x00000000004768f0                . = DATA_SEGMENT_END (.)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment        0x0000000000000000       0x31
+ *(.comment)
+ .comment       0x0000000000000000       0x31 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/crt1.o
+                                         0x64 (size before relaxing)
+ .comment       0x0000000000000031       0x32 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/crtbegin.o
+ .comment       0x0000000000000031       0x32 .obj/ih_redial.o
+ .comment       0x0000000000000031       0x32 .obj/modem.o
+ .comment       0x0000000000000031       0x32 .obj/ppp.o
+ .comment       0x0000000000000031       0x32 .obj/operator.o
+ .comment       0x0000000000000031       0x32 .obj/sms.o
+ .comment       0x0000000000000031       0x32 .obj/pdu.o
+ .comment       0x0000000000000031       0x32 .obj/mbim.o
+ .comment       0x0000000000000031       0x32 .obj/redial_factory.o
+ .comment       0x0000000000000031       0x32 .obj/redial_cloud_web.o
+ .comment       0x0000000000000031       0x32 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/libc_nonshared.a(elf-init.oS)
+ .comment       0x0000000000000031       0x32 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/crtend.o
+
+.pdr            0x0000000000000000     0x2180
+ .pdr           0x0000000000000000        0x0 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/crt1.o
+ .pdr           0x0000000000000000        0x0 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/crti.o
+ .pdr           0x0000000000000000        0x0 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/crtbegin.o
+ .pdr           0x0000000000000000      0xd60 .obj/ih_redial.o
+ .pdr           0x0000000000000d60      0xd60 .obj/modem.o
+ .pdr           0x0000000000001ac0       0x60 .obj/ppp.o
+ .pdr           0x0000000000001b20       0x40 .obj/operator.o
+ .pdr           0x0000000000001b60      0x1e0 .obj/sms.o
+ .pdr           0x0000000000001d40      0x180 .obj/pdu.o
+ .pdr           0x0000000000001ec0       0x80 .obj/mbim.o
+ .pdr           0x0000000000001f40      0x160 .obj/redial_factory.o
+ .pdr           0x00000000000020a0       0xa0 .obj/redial_cloud_web.o
+ .pdr           0x0000000000002140       0x40 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/libc_nonshared.a(elf-init.oS)
+ .pdr           0x0000000000002180        0x0 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/crtend.o
+ .pdr           0x0000000000002180        0x0 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/crtn.o
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges
+ *(.debug_aranges)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info
+ *(.debug_info .gnu.linkonce.wi.*)
+
+.debug_abbrev
+ *(.debug_abbrev)
+
+.debug_line
+ *(.debug_line .debug_line.* .debug_line_end)
+
+.debug_frame
+ *(.debug_frame)
+
+.debug_str
+ *(.debug_str)
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges
+ *(.debug_ranges)
+
+.debug_macro
+ *(.debug_macro)
+
+.debug_addr
+ *(.debug_addr)
+
+.gnu.attributes
+                0x0000000000000000       0x10
+ *(.gnu.attributes)
+ .gnu.attributes
+                0x0000000000000000       0x10 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/crt1.o
+ .gnu.attributes
+                0x0000000000000010       0x10 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/crti.o
+ .gnu.attributes
+                0x0000000000000020       0x10 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/crtbegin.o
+ .gnu.attributes
+                0x0000000000000030       0x10 .obj/ih_redial.o
+ .gnu.attributes
+                0x0000000000000040       0x10 .obj/modem.o
+ .gnu.attributes
+                0x0000000000000050       0x10 .obj/ppp.o
+ .gnu.attributes
+                0x0000000000000060       0x10 .obj/operator.o
+ .gnu.attributes
+                0x0000000000000070       0x10 .obj/sms.o
+ .gnu.attributes
+                0x0000000000000080       0x10 .obj/pdu.o
+ .gnu.attributes
+                0x0000000000000090       0x10 .obj/mbim.o
+ .gnu.attributes
+                0x00000000000000a0       0x10 .obj/redial_factory.o
+ .gnu.attributes
+                0x00000000000000b0       0x10 .obj/redial_cloud_web.o
+ .gnu.attributes
+                0x00000000000000c0       0x10 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/libc_nonshared.a(elf-init.oS)
+ .gnu.attributes
+                0x00000000000000d0       0x10 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/crtend.o
+ .gnu.attributes
+                0x00000000000000e0       0x10 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/crtn.o
+
+.gptab.sdata
+ *(.gptab.data)
+ *(.gptab.sdata)
+
+.gptab.sbss
+ *(.gptab.bss)
+ *(.gptab.sbss)
+
+.mdebug.abi32   0x0000000000000000        0x0
+ *(.mdebug.abi32)
+ .mdebug.abi32  0x0000000000000000        0x0 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/crt1.o
+ .mdebug.abi32  0x0000000000000000        0x0 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/crtbegin.o
+ .mdebug.abi32  0x0000000000000000        0x0 .obj/ih_redial.o
+ .mdebug.abi32  0x0000000000000000        0x0 .obj/modem.o
+ .mdebug.abi32  0x0000000000000000        0x0 .obj/ppp.o
+ .mdebug.abi32  0x0000000000000000        0x0 .obj/operator.o
+ .mdebug.abi32  0x0000000000000000        0x0 .obj/sms.o
+ .mdebug.abi32  0x0000000000000000        0x0 .obj/pdu.o
+ .mdebug.abi32  0x0000000000000000        0x0 .obj/mbim.o
+ .mdebug.abi32  0x0000000000000000        0x0 .obj/redial_factory.o
+ .mdebug.abi32  0x0000000000000000        0x0 .obj/redial_cloud_web.o
+ .mdebug.abi32  0x0000000000000000        0x0 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/../../../../mipsel-linux-gnu/lib/libc_nonshared.a(elf-init.oS)
+ .mdebug.abi32  0x0000000000000000        0x0 /opt/mt7621-mipsel_1004kc+dsp_gcc-7.5.0_glibc/bin/../lib/gcc/mipsel-linux-gnu/7.5.0/crtend.o
+
+.mdebug.abiN32
+ *(.mdebug.abiN32)
+
+.mdebug.abi64
+ *(.mdebug.abi64)
+
+.mdebug.abiO64
+ *(.mdebug.abiO64)
+
+.mdebug.eabi32
+ *(.mdebug.eabi32)
+
+.mdebug.eabi64
+ *(.mdebug.eabi64)
+
+.gcc_compiled_long32
+ *(.gcc_compiled_long32)
+
+.gcc_compiled_long64
+ *(.gcc_compiled_long64)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+OUTPUT(redial elf32-tradlittlemips)

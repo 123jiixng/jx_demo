@@ -1,0 +1,21 @@
+海思
+https://blog.csdn.net/qq_45544223/category_10121099.html
+海思HI3516开发环境搭建 ubuntu16.04 一
+https://blog.csdn.net/cumtwys/article/details/107934819?utm_source=app&app_version=5.5.0&code=app_1562916241&uLinkId=usr1mkqgl919blen
+http://qiushao.net/2020/04/15/IPCamera/Hi3519AV100-sdk-overview/index.html
+https://www.cnblogs.com/linhaostudy/p/11268297.html
+https://blog.51cto.com/u_15067266/3846105
+
+https://blog.csdn.net/zh8706/article/details/94554337
+/*
+https://bbs.huaweicloud.com/blogs/271151
+https://blog.csdn.net/dx0014/article/details/114709403
+*/
+https://blog.csdn.net/kwdx2/article/details/92803710
+海思平台编译osdrv常见问题汇总
+https://blog.csdn.net/Run_Feng/article/details/121945051
+https://blog.csdn.net/m0_37985956/article/details/118380649
+海思Demo的yolov3
+https://blog.csdn.net/qq_29858649/article/details/113091540
+https://blog.csdn.net/Aidam_Bo/article/details/109099810
+https://blog.csdn.net/HELLOWORLD2424/article/details/125008325
